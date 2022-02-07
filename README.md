@@ -1,2 +1,7 @@
-# hexlet-python
-Tasks for online Hexlet courses for the profession of Python developer
+# [Hexlet](https://ru.hexlet.io/)
+### Профессия
+## [Python-разработчик](https://ru.hexlet.io/programs/python)
+
+Решения задач к курсам профессии
+
+Все задачи решены самостоятельно
