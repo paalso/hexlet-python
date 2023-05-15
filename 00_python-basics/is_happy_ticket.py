@@ -9,8 +9,8 @@
 
 
 def is_happy_ticket(number):
-    half_size = len(number) // 2
-    return sum(map(int, number[:half_size])) == sum(map(int, number[half_size:]))
+    half_len = len(number) // 2
+    return sum(map(int, number[:half_len])) == sum(map(int, number[half_len:]))
 
 
 assert is_happy_ticket('123123')
