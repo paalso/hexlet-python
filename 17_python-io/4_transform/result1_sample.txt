@@ -1,0 +1,17 @@
+Beautiful than ugly
+Explicit than implicit
+Simple than Complex
+Complex than Complicated
+Readability Counts
+Special Cases aren't special enough break the rules
+Although practicality beats purity
+Errors should Never silently
+Unless explicitly silenced
+the face ambiguity refuse the temptation guess
+There should one and preferably only one obvious way
+Although that way may Not obvious first unless you're Dutch
+Now than Never
+Although Never often than right Now
+the implementation hard explain it's bad idea
+the implementation easy explain may good idea
+Namespaces are one honking great idea let's more those

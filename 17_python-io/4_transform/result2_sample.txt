@@ -1,0 +1,15 @@
+Beautiful better
+Explicit better implicit
+Simple better complex
+Complex better complicated
+Readability counts
+Special cases aren't Special enough break rules
+Although Practicality beats Purity
+Errors Should never Silently
+Unless explicitly Silenced
+ambiguity refuse temptation guess
+There Should Preferably obvious
+Although obvious first unless you're Dutch
+better never
+Although never often better right
+Namespaces honking great let's those
