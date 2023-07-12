@@ -1,0 +1,15 @@
+>>>file1>>>
+Hello from Hexlet
+=====
+Hello World
+<<<file2<<<
+Python is awesome
+>>>file1>>>
+Python also is a snake
+And also a comedy show
+Use context managers
+=====
+And also a comedy show
+Python also is a snake
+Use Force
+<<<file2<<<

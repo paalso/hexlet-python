@@ -1,0 +1,9 @@
+Hello from Hexlet
+>>>file1>>>
+Python is awesome
+Javascript is not about coffee
+=====
+Python is a snake
+Javascript is a language
+<<<file2<<<
+Use context managers
