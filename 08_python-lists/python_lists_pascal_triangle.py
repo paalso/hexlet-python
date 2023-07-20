@@ -18,6 +18,20 @@ def triangle(n):
     return prev_row
 
 
+def triangle(n):
+    if n == 0:
+        return [1]
+
+    current_list = [1]
+    previous_list = triangle(n - 1)
+
+    for i in range(1, n):
+        current_list.append(previous_list[i - 1] + previous_list[i])
+    current_list.append(1)
+
+    return current_list
+
+
 assert triangle(0) == [1]
 assert triangle(1) == [1, 1]
 assert triangle(2) == [1, 2, 1]
