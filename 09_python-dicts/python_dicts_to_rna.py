@@ -15,10 +15,11 @@
 
 def to_rna(dna_sequence):
     dna_to_rna_dict = {"G": "C", "C": "G", "T": "A", "A": "U"}
-    return  "".join([dna_to_rna_dict[dna] for dna in dna_sequence])
+    return  "".join(dna_to_rna_dict[dna] for dna in dna_sequence)
 
 
 assert to_rna('ACGTGGTCTTAA') == 'UGCACCAGAAUU'
 
 # def to_rna(nucleotide):
-#     return ''.join(map(MAPPING.get, nucleotide))
+#     dna_to_rna_dict = {"G": "C", "C": "G", "T": "A", "A": "U"}
+#     return ''.join(map(dna_to_rna_dict.get, nucleotide))
