@@ -30,50 +30,27 @@ def has_collision(map, key):
         return False
 
     current_key, _ = current_item
-    return key != current_item
+    return key != current_key
 
 
 def get_(map, key, default=None):
     id_ = get_hash(key)
     current_item = map[id_]
 
-    if current_item is None:
+    if not current_item or has_collision(map, key):
         return default
 
-    current_key, current_value = current_item
-    if current_key != key:
-        return default
-
-    return current_value
-
-
-def get_(map, key, default=None):
-    id_ = get_hash(key)
-    current_item = map[id_]
-
-    if current_item is None:
-        return default
-
-    current_key, current_value = current_item
-    if current_key != key:
-        return default
-
+    _, current_value = current_item
     return current_value
 
 
 def set_(map, key, value):
     id_ = get_hash(key)
-    current_item = map[id_]
 
-    if not current_item:
-        map[id_] = [key, value]
-        return True
-
-    current_key, _ = current_item
-    if current_key != key:
+    if has_collision(map, key):
         return False
 
-    map[id_][1] = value
+    map[id_] = [key, value]
     return True
 
 
@@ -82,7 +59,6 @@ assert get_(map, b'key') is None
 assert get_(map, b'key', b'value') == b'value'
 
 set_(map, b'key2', b'value2')
-
 assert get_(map, b'key2') == b'value2'
 assert get_(map, b'None') is None
 
