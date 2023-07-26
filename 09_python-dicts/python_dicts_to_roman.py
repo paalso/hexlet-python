@@ -29,33 +29,28 @@ def to_roman(number):
 
 
 def to_arabic(roman_number):
-    roman_digits_table = {
-        'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1
+    if not roman_number:
+        return 0
+
+    roman_to_arabic_map = {
+        'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1,
     }
-    number = 0
-    roman_digits = list(roman_number)
-    roman_digits_copy = roman_digits.copy()
 
-    for i in range(1, len(roman_digits_copy)):
-        prev_roman_digit = roman_digits_copy[i - 1]
-        prev_value = roman_digits_table[prev_roman_digit]
-        current_roman_digit = roman_digits_copy[i]
-        current_value = roman_digits_table[current_roman_digit]
+    def reversed_order_factor(roman_1, roman_2):
+        if roman_to_arabic_map[roman_1] < roman_to_arabic_map[roman_2]:
+            return -1
+        return 1
 
-        if prev_value < current_value:
-            number += (current_value - prev_value)
-            roman_digits.remove(prev_roman_digit)
-            roman_digits.remove(current_roman_digit)
-
-    for key, val in roman_digits_table.items():
-        number += roman_digits.count(key) * val
-
-    # Если переданное римское число не корректно,
-    # то функция должна вернуть значение False
-    if to_roman(number) != roman_number:
-        return False
-
-    return number
+    arabic_number = 0
+    for i in range(len(roman_number) - 1):
+        current_roman_digit, next_roman_digit = roman_number[i:i + 2]
+        arabic_number += \
+            reversed_order_factor(current_roman_digit, next_roman_digit) * \
+            roman_to_arabic_map[current_roman_digit]
+    arabic_number += roman_to_arabic_map[roman_number[-1]]
+    if to_roman(arabic_number) == roman_number:
+        return arabic_number
+    return False
 
 
 assert to_arabic('I') == 1
