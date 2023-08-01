@@ -10,6 +10,7 @@
 # будет weqrty, а её длина — 6 символов.
 
 
+# Version 1
 def find_longest_length(text):
     size = len(text)
 
@@ -46,6 +47,7 @@ assert find_longest_length('abcdeef') == 5
 assert find_longest_length('jabjcdel') == 7
 
 
+# Version 2
 def unique_sequence_length(string):
     unique_sequence = []
     for char in string:
@@ -65,6 +67,7 @@ def find_longest_length1(string):
     return longest_length
 
 
+# Version 3
 def find_longest_length2(text):
 
     def longest_from_pos(pos):
@@ -89,12 +92,46 @@ def find_longest_length2(text):
         i += 1
     return max_len
 
+
+# Version 4
+def longest_uniq_chars_substring_from_position(text, position):
+    symbols = set()
+    for i in range(position, len(text)):
+        if (c := text[i]) in symbols:
+            return i - position
+        symbols.add(c)
+    return i - position + 1
+
+
+def find_longest_length3(text):
+    return max(longest_uniq_chars_substring_from_position(text, i)
+               for i in range(len(text))) if len(text) > 0 else 0
+
+
+# Version 5
+def find_longest_length4(string):
+    longest_length = 0
+    for i, _ in enumerate(string):
+        uniq_chars = []
+        for char in string[i:]:
+            if char in uniq_chars:
+                break
+            uniq_chars.append(char)
+        longest_length = max(longest_length, len(uniq_chars))
+    return longest_length
+
+
 # === Benchmarking =======================================================
 
 text = \
 """Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ipsa libero
 aut quo laudantium iusto quibusdam aspernatur eveniet officiis. Rem saepe
 consequatur deserunt corporis vitae consequuntur sint maxime vel ipsam!"""
+
+import random
+import string
+
+text = ''.join(random.choice(string.ascii_letters) for _ in range(1000))
 
 
 def get_duration(func, *args, N=10000):
@@ -108,3 +145,24 @@ def get_duration(func, *args, N=10000):
 print(get_duration(find_longest_length, text))
 print(get_duration(find_longest_length1, text))
 print(get_duration(find_longest_length2, text))
+print(get_duration(find_longest_length3, text))
+print(get_duration(find_longest_length4, text))
+
+result = find_longest_length(text)
+print(f'The longest unique symbols substring: {result}')
+
+
+# $ p3 python_lists_longest_substring.py 
+# 17.334823846817017
+# 12.832444906234741
+# 11.910146474838257
+# 13.947957754135132
+# 14.384724855422974
+
+# p3 python_lists_longest_substring.py 
+# 16.631948232650757
+# 11.82318902015686
+# 13.139172315597534
+# 13.179091930389404
+# 15.625934362411499
+# The longest unique symbols substring: 24
