@@ -8,14 +8,9 @@
 # проверки, а возвращает последовательность анаграмм.
 
 
-def filter_anagrams(word, args):
-    signature = sorted(word)
-    return list(filter(lambda L: sorted(L) == signature, args))
-
-
 def filter_anagrams(sample, items):
     normalized_sample = sorted(sample)
-    return list(filter(lambda e: sorted(e) == normalized_sample, items))
+    return filter(lambda e: sorted(e) == normalized_sample, items)
 
 
 assert list(filter_anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada'])) == ['aabb', 'bbaa']

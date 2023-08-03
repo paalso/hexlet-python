@@ -7,8 +7,18 @@
 # как и у первого элемента исходного списка.
 
 
+# Version 1
 def same_parity_filter(items):
     return list(filter(lambda e: (e - items[0]) % 2 == 0, items))
+
+
+# Version 2
+def same_parity_filter(items):
+    if len(items) == 0:
+        return items
+
+    first_element_parity = items[0] % 2
+    return list(filter(lambda x: x % 2 == first_element_parity, items))
 
 
 assert same_parity_filter([]) == []

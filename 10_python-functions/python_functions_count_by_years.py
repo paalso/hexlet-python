@@ -9,11 +9,25 @@
 
 import collections
 
-
+# Version 1
 def get_men_counted_by_year(data):
     men_filtered = filter(lambda entry: entry['gender'] == 'male', data)
     years = map(lambda entry: int(entry['birthday'][:4]), men_filtered)
     return dict(collections.Counter(years))
+
+
+# Version 2
+from collections import Counter
+
+
+def get_counted_by_year(users):
+    years = map(lambda entry: int(entry['birthday'].split('-')[0]), users)
+    return dict(Counter(years))
+
+
+def get_men_counted_by_year(users):
+    men_items = filter(lambda entry: entry['gender'] == 'male', users)
+    return get_counted_by_year(men_items)
 
 
 users = [
