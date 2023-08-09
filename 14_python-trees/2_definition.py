@@ -20,4 +20,9 @@ def remove_first_level(tree):
 tree1 = [[5], 1, [3, 4]]
 assert remove_first_level(tree1) == [5, 3, 4]
 tree2 = [1, 2, [3, 5], [[4, 3], 2]]
-assert  remove_first_level(tree2) == [3, 5, [4, 3], 2]
+assert remove_first_level(tree2) == [3, 5, [4, 3], 2]
+
+
+# Another version:
+# def remove_first_level(tree):
+#     return list(itertools.chain(*(e for e in tree if isinstance(e, list))))
