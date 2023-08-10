@@ -10,4 +10,4 @@
 4  | +     |Частотность длин слов                     |89%          |  [link](https://ru.hexlet.io/code_reviews/435985)|
 5  | +     |Декартово произведение                    |75%          |  [link](https://ru.hexlet.io/code_reviews/436208)|
 6  | +     |Теория вероятности                        |74%          |  [link](https://ru.hexlet.io/code_reviews/1108504)|
-7  | -     |Перемежовка последовательности            |74%          |  [link]|
+7  | +     |Перемежовка последовательности            |74%          |  [link](https://ru.hexlet.io/code_reviews/436000)|

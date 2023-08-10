@@ -14,10 +14,9 @@
 8  | +     |Сравнение версий                |96%          |  [link](https://ru.hexlet.io/code_reviews/210099)|
 9  | +     |Список диапазонов               |84%          |  [link](https://ru.hexlet.io/code_reviews/214092)|
 10 | +     |Транспонирование матриц         |90%          |  [link](https://ru.hexlet.io/code_reviews/214035)|
-11 | -     |Чанкование потока               |69%          |
-12 | +     |Зеркалирование матрицы          |89%          |  [link](https://ru.hexlet.io/code_reviews/246481)|
-13 | +     |Сумма интервалов                |85%          |  [link](https://ru.hexlet.io/code_reviews/247675)|
-14 | +     |Обратная польская запись        |89%          |  [link](https://ru.hexlet.io/code_reviews/246115)|
-15 | +     |Улитка                          |71%          |  [link](https://ru.hexlet.io/code_reviews/246458)|
-16 | +     |Умножение матриц                |81%          |  [link](https://ru.hexlet.io/code_reviews/247024)|
-17 | +     |Копилка                         |64%          |  [link](https://ru.hexlet.io/code_reviews/243842)|
+11 | +     |Зеркалирование матрицы          |89%          |  [link](https://ru.hexlet.io/code_reviews/246481)|
+12 | +     |Сумма интервалов                |85%          |  [link](https://ru.hexlet.io/code_reviews/247675)|
+13 | +     |Обратная польская запись        |89%          |  [link](https://ru.hexlet.io/code_reviews/246115)|
+14 | +     |Улитка                          |71%          |  [link](https://ru.hexlet.io/code_reviews/246458)|
+15 | +     |Умножение матриц                |81%          |  [link](https://ru.hexlet.io/code_reviews/247024)|
+16 | +     |Копилка                         |64%          |  [link](https://ru.hexlet.io/code_reviews/243842)|
