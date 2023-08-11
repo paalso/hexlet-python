@@ -7,7 +7,7 @@
 1  | +     |Столбчатая диаграмма                      |78%          |  [link](https://ru.hexlet.io/code_reviews/1102830)|
 2  | -     |Функции с проверкой типов                 |57%          |        |
 3  | +     |NRZI кодирование                          |85%          |  [link](https://ru.hexlet.io/code_reviews/272810)|
-4  | -     |IP конвертер                              |85%          |        |
+4  | +     |IP конвертер                              |85%          |  [link](https://ru.hexlet.io/code_reviews/272142)|
 5  | +     |Поиск ближайшего соседа                   |93%          |  [link](https://ru.hexlet.io/code_reviews/257709)|
 6  | +     |Фильтр анаграмм                           |95%          |  [link](https://ru.hexlet.io/code_reviews/257369)|
 7  | -     |Интерактивные функции                     |45%          |        |
