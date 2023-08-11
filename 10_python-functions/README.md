@@ -11,8 +11,8 @@
 5  | +     |Поиск ближайшего соседа                   |93%          |  [link](https://ru.hexlet.io/code_reviews/257709)|
 6  | +     |Фильтр анаграмм                           |95%          |  [link](https://ru.hexlet.io/code_reviews/257369)|
 7  | -     |Интерактивные функции                     |45%          |        |
-8  | +     |Горизонтальная гистограмма                |88%          |  [linl](https://ru.hexlet.io/code_reviews/271687)|
-9  | -     |Увеличение двумерного списка (в ФП стиле) |65%	        |        | 
+8  | +     |Горизонтальная гистограмма                |88%          |  [link](https://ru.hexlet.io/code_reviews/271687)|
+9  | +-    |Увеличение двумерного списка (в ФП стиле) |65%	        |  [linl](https://ru.hexlet.io/code_reviews/356872)| 
 10 | +     |Счётчик одногодок	                      |91%          |  [link](https://ru.hexlet.io/code_reviews/435304)|
 11 | +     |Конвертер цветов                          |93%          |  [link](https://ru.hexlet.io/code_reviews/259157)|
 12 | +     |Композиция функций 		                  |97%          |  [link](https://ru.hexlet.io/code_reviews/1102250)|
