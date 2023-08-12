@@ -13,39 +13,65 @@
 Картинками считаются все файлы, заканчивающиеся на .jpg.
 """
 
-import copy
-import fs
 from fs import get_children, get_meta, get_name, is_file, mkdir, mkfile
+import pprint
+import copy
 
 
-def is_image(node):
-    return is_file(node) and get_name(node).endswith('.jpg')
+def ls(tree):
+    return list(map(lambda path: get_name(path), get_children(tree)))
 
 
-def compress_image(node):
-    new_meta = copy.deepcopy(get_meta(node))
-    if is_image(node):
-        new_meta['size'] //= 2
-        return mkfile(get_name(node), new_meta)
-    return node
+def get_extension(path):
+    name = get_name(path)
+    point_pos = name.rfind('.')
+    if point_pos > -1:
+        return name[point_pos + 1:]
 
 
-def compress_images(tree):
-    new_children = list(map(
-            lambda e: compress_image(e) if is_file(e) else compress_images(e),
-                   get_children(tree)))
-    return mkdir(get_name(tree), new_children, copy.deepcopy(get_meta(tree)))
+def is_picture(file, extensions=['jpg']):
+    return is_file(file) and get_extension(file) in extensions
 
+
+def compress_image(file, factor=0.5):
+    name = get_name(file)
+    meta = copy.deepcopy(get_meta(file))
+    if is_picture(file) and 'size' in meta:
+        meta['size'] = int(factor * meta['size'])
+    return mkfile(name, meta)
+
+
+def compress_images(tree, factor=0.5):
+    name = get_name(tree)
+    meta = copy.deepcopy(get_meta(tree))
+    children = [compress_image(path) if is_file(path) else
+                compress_images(path) for path in get_children(tree)]
+    return mkdir(name, children, meta)
+
+
+# tree = mkdir(
+#     'my documents',
+#     [
+#         mkfile('avatar.jpg', {'size': 100}),
+#         mkfile('photo.jpg', {'size': 150}),
+#         mkfile('text.txt', {'size': 200}),
+#         mkdir('subdir', [
+#             mkdir('empty_subdir', []),
+#             mkfile('pictire.jpg', {'size': 200})
+#             ])
+#     ],
+#     {'hide': False}
+# )
 
 tree = mkdir(
     'my documents',
     [
-        mkfile('avatar.avi', {'size': 21000}),
         mkfile('avatar.jpg', {'size': 100}),
         mkfile('photo.jpg', {'size': 150}),
     ],
     {'hide': False}
 )
 
-
-print(compress_images(tree))
+pprint.pprint(tree)
+print()
+pprint.pprint(compress_images(tree))
