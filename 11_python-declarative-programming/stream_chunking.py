@@ -9,7 +9,7 @@
 # (итератор). Вернуть функция должна итератор списков заданной длины,
 # содержащих элементы из источника данных.
 
-from itertools import count, islice
+from itertools import count
 
 
 def ichunks(chunk_size, itarable):
@@ -58,7 +58,6 @@ for e in sliced:
         break
     print(e)
     i += 1
-
 
 
 # BEGIN
