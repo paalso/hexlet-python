@@ -19,4 +19,4 @@
 13 | +     |Обратная польская запись        |89%          |  [link](https://ru.hexlet.io/code_reviews/246115)|
 14 | +     |Улитка                          |71%          |  [link](https://ru.hexlet.io/code_reviews/246458)|
 15 | +     |Умножение матриц                |81%          |  [link](https://ru.hexlet.io/code_reviews/247024)|
-16 | +     |Копилка                         |64%          |  [link](https://ru.hexlet.io/code_reviews/243842)|
+16 | +     |Копилка                         |64%          |  [link](https://ru.hexlet.io/code_reviews/243874)|
