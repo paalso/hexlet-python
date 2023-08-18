@@ -19,14 +19,15 @@ def get_nodes_count(node):
     return sum(map(lambda e: get_nodes_count(e), get_children(node))) + 1
 
 
-def is_hidden_file(node):
-    return is_file(node) and get_name(node).startswith('.')
+def is_hidden(node):
+    return get_name(node).startswith('.')
 
 
 def get_hidden_files_count(node):
     if is_file(node):
-        return 1 if is_hidden_file(node) else 0
-    return sum(map(lambda e: get_hidden_files_count(e), get_children(node)))
+        return is_hidden(node)
+
+    return sum(map(get_hidden_files_count, get_children(node)))
 
 
 tree = mkdir('/', [
