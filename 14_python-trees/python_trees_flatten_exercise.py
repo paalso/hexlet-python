@@ -32,3 +32,16 @@ def flatten(L):
         else:
             flattened.append(e)
     return flattened
+    
+   
+# Version № 3
+def flatten2(lists):
+    flattened = []
+
+    def inner(node):
+        for e in node:
+            inner(e) if isinstance(e, list) else flattened.append(e)
+
+    inner(lists)
+    return flattened
+
