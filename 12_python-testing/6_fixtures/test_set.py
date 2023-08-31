@@ -30,53 +30,63 @@ set_ = get_function("right")
 
 
 @pytest.fixture
-def get_coll():
-    return { "a": { "b": { "c": 3 } } }
+def coll():
+    return {'a': {'b': {'c': 3}}}
 
 
-def test_set_(get_coll):
-    coll = get_coll
-    # print(coll)
-
-    set_(coll, ["a", "b", "c"], 4)
-    # print(coll)
+def test_existing_path_update(coll):
+    set_(coll, ['a', 'b', 'c'], 4)
     assert coll == {'a': {'b': {'c': 4}}}
 
-    set_(coll, ["a", "b", "c", "d"], 5)
+
+def test_inc_path_nesting(coll):
+    set_(coll, ['a', 'b', 'c', 'd'], 5)
     assert coll == {'a': {'b': {'c': {'d': 5}}}}
 
-    set_(coll, ["a", "b", "c", "e"], 6)
-    assert coll == {'a': {'b': {'c': {'d': 5, 'e': 6}}}}
 
-    set_(coll, ["a", "b"], 4)
-    assert coll == {'a': {'b': 4}}
+def test_dec_path_nesting(coll):
+    set_(coll, ['a'], 5)
+    assert coll == {'a': 5}
 
-    set_(coll, ["x", "y", "z"], 5)
-    assert coll == {'a': {'b': 4}, 'x': {'y': {'z': 5}}}
+
+def test_existing_path_update_with_new_key(coll):
+    set_(coll, ['a', 'b', 'd'], 7)
+    assert coll == {'a': {'b': {'c': 3, 'd': 7}}}
+
+
+def test_new_path_set(coll):
+    set_(coll, ['x', 'y', 'z'], 5)
+    assert coll == {'a': {'b': {'c': 3}}, 'x': {'y': {'z': 5}}}
+
+
+def test_to_empty_dict_set():
+    coll = {}
+    set_(coll, ['x', 'y', 'z'], 5)
+    assert coll == {'x': {'y': {'z': 5}}}
 
 
 # Author's version
 """
-def test_plain_set():
-    # TODO: use parametrizing tests
-    data = {"a": {"b": {"c": "d"}}}
+@pytest.fixture
+def data():
+    return {"a": {"b": {"c": "d"}}}
+
+
+def test_plain_set(data):
     data_copy = copy.deepcopy(data)
     set_(data, ['a'], 'value')
-
     data_copy['a'] = 'value'
     assert data_copy == data
 
 
-def test_nested_set():
-    data = {"a": {"b": {"c": "d"}}}
+def test_nested_set(data):
     data_copy = copy.deepcopy(data)
     set_(data, ['a', 'b', 'c'], 'value')
     data_copy['a']['b']['c'] = 'value'
     assert data_copy == data
 
 
-def test_new_property_set():
-    data = {"a": {"b": {"c": "d"}}}
+def test_new_property_set(data):
     data_copy = copy.deepcopy(data)
     set_(data, ['a', 'b', 'd'], 'value')
     data_copy['a']['b']['d'] = 'value'

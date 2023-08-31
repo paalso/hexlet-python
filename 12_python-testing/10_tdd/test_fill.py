@@ -8,67 +8,53 @@
 # ====================================
 
 
-'''
-coll =  [1, 2, 3, 4]
- 
-fill(coll, '*', 1, 3)
-print(coll)  # => [1, '*', '*', 4]
- 
-fill(coll, '*')
-print(coll)  # => ['*', '*', '*', '*']
- 
-fill(coll, '*', 4)
-print(coll)  # => [1, 2, 3, 4]
- 
-fill(coll, '*', 0, 10)
-print(coll)  # => ['*', '*', '*', '*']
-'''
 import pytest
-from solution import fill
+from hexlet_pytest.fill import fill
 
 
 @pytest.fixture(name='collection')
-def _collection():
+def get_collection():
     return [1, 2, 3, 4]
 
 
-def test_fill(collection):
-    fill(collection, '*', 1, 3)
-    assert collection == [1, '*', '*', 4]
+def test_fill_with_given_limits(collection):
+    fill(collection, '*', 1, 1)
+    assert collection == [1, 2, 3, 4]
+
+    fill(collection, '*', 1, 0)
+    assert collection == [1, 2, 3, 4]
+
+    fill(collection, '*', 0, -1)
+    assert collection == ['*', '*', '*', 4]
+
+    fill(collection, '%', 0, -5)
+    assert collection == ['*', '*', '*', 4]
+
+    fill(collection, '&', 1, 3)
+    assert collection == ['*', '&', '&', 4]
+
+    fill(collection, '#', 2, 10)
+    assert collection == ['*', '&', '#', '#']
+
+    fill(collection, '+', -2, 3)
+    assert collection == ['*', '&', '+', '#']
 
 
-# BEGIN (write your solution here)
-def test_empty_coll():
-    collection = []
-
-    fill(collection, '*', 1, 3)
-    assert collection == []
-
-
-def test_nonempty_coll1(collection):
-
-    fill(collection, '*', 1, 3)
-    assert collection == [1, '*', '*', 4]
-
+def test_fill_without_given_limits(collection):
     fill(collection, '*')
     assert collection == ['*', '*', '*', '*']
 
 
-def test_nonempty_coll2(collection):
-
+def test_fill_without_end_limit(collection):
     fill(collection, '*', 4)
     assert collection == [1, 2, 3, 4]
-    
-    fill(collection, '*', 0, 10)
-    assert collection == ['*', '*', '*', '*']
 
-    fill(collection, '#', -1, 10)
-    assert collection == ['#', '#', '#', '#']
+    fill(collection, '*', 2)
+    assert collection == [1, 2, '*', '*']
 
-    fill(collection, '%', 10, -1)
-    assert collection == ['#', '#', '#', '#']
+    fill(collection, '+', -2)
+    assert collection == [1, 2, '+', '+']
 
-    fill(collection, '$', 2, 3)
-    assert collection == ['#', '#', '$', '#']
- 
-# END
+    fill(collection, '~', -5)
+    assert collection == ['~', '~', '~', '~']
+
