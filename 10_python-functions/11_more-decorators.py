@@ -35,6 +35,24 @@ def memoizing(max_args):
     return wrapper
 
 
+def memoizing(max_memoized):
+    def wrapper(function):
+        memoized_values = {}
+        memoized_args = []
+        @wraps(function)
+        def inner(arg):
+            if arg in memoized_values:
+                return memoized_values[arg]
+            result = function(arg)
+            if len(memoized_args) >= max_memoized:
+                oldest_arg = memoized_args.pop(0)
+                memoized_values.pop(oldest_arg)
+            memoized_args.append(arg)
+            memoized_values[arg] = result
+            return result
+        return inner
+    return wrapper
+
 
 @memoizing(3)
 def f(x):
