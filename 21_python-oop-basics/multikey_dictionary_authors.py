@@ -11,11 +11,9 @@ class MultiKeyDict(object):
 
         """
         # BEGIN
-        self._sequence = 0  # счётчик, используемый для промежуточных ключей
-        self._keys = {}  # отображение внешних ключей во внутренние
-        self._values = {}  # отображение внутренних ключей в значения
-        for k, v in kwargs.items():
-            self[k] = v
+        self._sequence  # счётчик, используемый для промежуточных ключей
+        self._keys  # отображение внешних ключей во внутренние
+        self._values  # отображение внутренних ключей в значения
         # END
 
     def __getitem__(self, key):
@@ -26,9 +24,6 @@ class MultiKeyDict(object):
         - key — один из ключей, связанных со значением.
 
         """
-        # BEGIN
-        return self._values[self._keys[key]]
-        # END
 
     def __setitem__(self, key, value):
         """
@@ -42,14 +37,6 @@ class MultiKeyDict(object):
             value — сохраняемое по указанному ключу значение.
 
         """
-        # BEGIN
-        internal_key = self._keys.get(key)
-        if internal_key is None:
-            self._sequence += 1
-            internal_key = self._sequence
-            self._keys[key] = internal_key
-        self._values[internal_key] = value
-        # END
 
     def alias(self, **kwargs):
         """
@@ -61,31 +48,41 @@ class MultiKeyDict(object):
 
         """
         # BEGIN
-        for new_key, key in kwargs.items():
-            self._keys[new_key] = self._keys[key]
-            # Текущая реализация позволяет делать существующие ключи
-            # псевдонимами для других существующих ключей.
-            # Это может привести к "осиротению" некоторых значений —
-            # значения могут потерять внешний ключ. Такие "сироты"
-            # будут занимать память, но не будут доступны извне.
-            # В реальном коде эту проблему пришлось бы решать,
-            # для учебных же целей реализация годится и в таком виде.
-        # END
 
 
-mkd = MultiKeyDict(a=1, b='foo', c=3)
+
+mkd = MultiKeyDict(a=1, b='foo', c=3.14)
+print()
+print(f'_keys:   {mkd._keys}')
+print(f'_values: {mkd._values}')
+
 mkd.alias(a1='a', b1='b')
-mkd.alias(aa1='a1', b1='b')
-mkd.alias(aaa1='aa1', b1='b')
 
-mkd.alias(a='c', b1='b')
+print()
+print(f'_keys:   {mkd._keys}')
+print(f'_values: {mkd._values}')
 
-mkd['aaa1'] = 47
+mkd['a1'] = 19
+print()
+print(f'_keys:   {mkd._keys}')
+print(f'_values: {mkd._values}')
+# mkd.alias(aa1='a1', b1='b')
+# mkd.alias(aaa1='aa1', bb1='b')
 
-print(mkd['aaa1'])
-print(mkd['aa1'])
-print(mkd['a1'])
-print(mkd['a'])
+# print(f"a: {mkd['a']}")
+# print(f"a1: {mkd['a1']}")
+# print(f"aa1: {mkd['aa1']}")
+# print(f"aaa1: {mkd['aaa1']}")
 
-print(mkd._values)
-print(mkd._keys)
+# mkd.alias(a='c')
+
+# try:
+#     print(f"a: {mkd['a']}")
+# except KeyError:
+#     print(f"No key {'a'}")
+# print(f"a1: {mkd['a1']}")
+# print(f"aa1: {mkd['aa1']}")
+# print(f"aaa1: {mkd['aaa1']}")
+
+# print(f'_keys:   {mkd._keys}')
+# print(f'_values: {mkd._values}')
