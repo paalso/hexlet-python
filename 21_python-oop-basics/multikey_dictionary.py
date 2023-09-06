@@ -67,10 +67,14 @@ class MultiKeyDict():
     def alias(self, **kwargs):
         for new_key, existing_key in kwargs.items():
             basic_key = self.__get_basic_key(existing_key)
-            if new_key not in self.vault:
-                self.aliases[new_key] = basic_key
-            else:
+            if new_key in self.vault:
                 self.__relink_basic_key(new_key)
+            self.aliases[new_key] = basic_key
+
+    def print_inner_structure(self):
+        print(f'vault:   {self.vault}')
+        print(f'aliases: {self.aliases}')
+        print()
 
     def __get_basic_key(self, key):
         if key not in self.vault:
@@ -106,16 +110,19 @@ print(f"a: {mkd['a']}")
 print(f"a1: {mkd['a1']}")
 print(f"aa1: {mkd['aa1']}")
 print(f"aaa1: {mkd['aaa1']}")
+print(f"c: {mkd['c']}")
 
+mkd.print_inner_structure()
 mkd.alias(a='c')
 
 try:
     print(f"a: {mkd['a']}")
 except KeyError:
     print(f"No key {'a'}")
+
 print(f"a1: {mkd['a1']}")
 print(f"aa1: {mkd['aa1']}")
 print(f"aaa1: {mkd['aaa1']}")
+print(f"c: {mkd['c']}")
 
-print(f'vault:   {mkd.vault}')
-print(f'aliases: {mkd.aliases}')
+mkd.print_inner_structure()
