@@ -1,13 +1,14 @@
 # https://ru.hexlet.io/courses/python-object-oriented-design/lessons/configuration/exercise_unit
 # https://ru.hexlet.io/code_reviews/1133501
 
-# Python: Объектно-ориентированный дизайн 
-# 2. Конфигурация
+# Python: Объектно-ориентированный дизайн
+# 3. Конфигурация
 
 # Реализуйте класс PasswordValidator ориентируясь на тесты.
 # Этот валидатор поддерживает следующие опции:
 # min_len (по умолчанию 8) — минимальная длина пароля
-# contain_numbers (по умолчанию False) — требование содержать хотя бы одну цифру
+# contain_numbers (по умолчанию False) — требование содержать хотя бы одну
+# цифру
 
 class PasswordValidator():
     OPTIONS = {
@@ -66,6 +67,6 @@ def test_validate_with_incorrect_options():
     assert errors2 == {'min_len': 'too small'}
 
 
-# test_validate_with_default_options()
-# test_validate_with_options()
+test_validate_with_default_options()
+test_validate_with_options()
 test_validate_with_incorrect_options()
