@@ -1,16 +1,24 @@
-#!/usr/bin/env python3
+# https://ru.hexlet.io/courses/python-polymorphism/lessons/dependency-inversion/exercise_unit
 
-#scripts/weather.py
+# https://ru.hexlet.io/code_reviews/1146490
+
+# Python: Полиморфизм
+# 9. Инверсия зависимостей
+
+'''
+Создайте полноценное консольное приложение, которое показывает текущую
+погоду в городе.
+'''
+
 import argparse
+import requests
 from weather_service import WeatherService
-
-API_URL = 'http://localhost:8080/api/v2/'
 
 
 def main(city_name):
     # BEGIN (write your solution here)
-    service = WeatherService(API_URL)
-    response = service.look_up(city_name)
+    weather_app = WeatherService(requests)
+    response = weather_app.look_up(city_name)
     temperature = response['temperature']
     return f'Temperature in {city_name}: {temperature}C'
     # END

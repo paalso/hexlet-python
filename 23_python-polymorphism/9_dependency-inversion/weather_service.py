@@ -1,13 +1,11 @@
-import requests
-class WeatherService():
-# BEGIN (write your solution here)
-    def __init__(self, weather_api) -> None:
-        self.api = weather_api
+API_URL = 'http://localhost:8080/api/v2/'
 
-    def look_up(self, city):
-        # response = {'name': 'city'}
-        city_prefix = f'cities/{city.lower()}'
-        request_url = f'{self.api}{city_prefix}'
-        response = requests.get(request_url)
+
+class WeatherService():
+    def __init__(self, http_client):
+        self.http_client = http_client
+
+    def look_up(self, city_name):
+        url = f'{API_URL}cities/{city_name}'
+        response = self.http_client.get(url)
         return response.json()
-# END
