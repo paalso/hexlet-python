@@ -8,6 +8,10 @@ packages = [{include = "hexlet_pytest"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+schema = "^0.7.5"
+faker = "^19.6.2"
+pytest = "^7.4.2"
+pyyaml = "^6.0.1"
 
 
 [build-system]
