@@ -1,0 +1,2 @@
+class TcpConnectionError(Exception):
+    pass
