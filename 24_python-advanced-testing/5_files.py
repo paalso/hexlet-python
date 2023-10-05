@@ -15,29 +15,23 @@ prettify_html_file = get_function()
 
 
 # BEGIN (write your solution here)
-FILES_TO_CLEAN = [
-    'fixtures/test.html',
-]
-
-
-# Будет вызываться для каждого теста
-@pytest.fixture(autouse=True)
-def clean_files():
-    for filepath in FILES_TO_CLEAN:
-        if os.path.isfile(filepath):
-            os.remove(filepath)
-    yield
-
-
-def test_prettify_html_file():
+# Фикстура для копирования before.html в test.html перед тестом
+@pytest.fixture
+def copy_before_html():
     shutil.copy('fixtures/before.html', 'fixtures/test.html')
-    prettify_html_file('/usr/src/app/fixtures/test.html')
-    with open('fixtures/test.html', 'r') as processed_file,\
-         open('fixtures/after.html', 'r') as sample_file:
-        assert processed_file.read() == sample_file.read()
+    yield  # Этот блок выполняется после завершения теста
+    os.remove('fixtures/test.html')
+
+
+def test_prettify_html_file(copy_before_html):
+    prettify_html_file('fixtures/test.html')
+    processed = open('fixtures/test.html', 'r').read()
+    sample = open('fixtures/after.html', 'r').read()
+    assert processed == sample
 # END
 
 
+# Hexlet's version
 # BEGIN
 def read(file_path):
     with open(file_path, 'r') as f:
