@@ -1,0 +1,73 @@
+Лайфхак чтобы запустить запутавшиеся зависимости
+-------------------------------------------------
+
+# удаляем текущую виртуальную среду
+~/Sandbox/hexlet-python/hexlet_pytest (main)$ rm -rf .venv
+~/Sandbox/hexlet-python/hexlet_pytest (main)$ rm -rf .pytest_cache/
+
+# устанавливаем среду заново
+~/Sandbox/hexlet-python/hexlet_pytest (main)$ poetry install
+Creating virtualenv hexlet-pytest in /home/paalso/Sandbox/hexlet-python/hexlet_pytest/.venv
+Installing dependencies from lock file
+
+Package operations: 29 installs, 0 updates, 0 removals
+
+  • Installing pycparser (2.21)
+  • Installing cffi (1.16.0)
+  • Installing certifi (2023.7.22)
+  • Installing charset-normalizer (3.3.0)
+  • Installing cryptography (41.0.4)
+  • Installing idna (3.4)
+  • Installing six (1.16.0)
+  • Installing soupsieve (2.5)
+  • Installing urllib3 (2.0.6)
+  • Installing wrapt (1.15.0)
+  • Installing beautifulsoup4 (4.12.2)
+  • Installing contextlib2 (21.6.0)
+  • Installing deprecated (1.2.14)
+  • Installing exceptiongroup (1.1.3)
+  • Installing iniconfig (2.0.0)
+  • Installing packaging (23.2): Pending...
+  • Installing pluggy (1.3.0)
+  • Installing packaging (23.2)
+  • Installing pluggy (1.3.0)
+  • Installing pyjwt (2.8.0)
+  • Installing pynacl (1.5.0)
+  • Installing python-dateutil (2.8.2)
+  • Installing requests (2.31.0): Pending...
+  • Installing tomli (2.0.1)
+  • Installing requests (2.31.0)
+  • Installing tomli (2.0.1)
+  • Installing typing-extensions (4.8.0)
+  • Installing bs4 (0.0.1)
+  • Installing faker (19.6.2)
+  • Installing pygithub (2.1.1)
+  • Installing pytest (7.4.2)
+  • Installing pyyaml (6.0.1)
+  • Installing schema (0.7.5)
+
+Installing the current project: hexlet-pytest (0.1.0)
+
+# все работает
+# в данном случае:
+#    from github import Github
+#    print(dir(Github))
+
+~/Sandbox/hexlet-python/hexlet_pytest (main)$ poetry run python3 hexlet_pytest/gitlib.py 
+['FIX_REPO_GET_GIT_REF', '__annotations__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'close', 'create_from_raw_data', 'default_retry', 'dump', 'get_app', 'get_emojis', 'get_enterprise', 'get_events', 'get_gist', 'get_gists', 'get_gitignore_template', 'get_gitignore_templates', 'get_hook', 'get_hook_deliveries', 'get_hook_delivery', 'get_hooks', 'get_license', 'get_licenses', 'get_oauth_application', 'get_organization', 'get_organizations', 'get_project', 'get_project_column', 'get_rate_limit', 'get_repo', 'get_repos', 'get_user', 'get_user_by_id', 'get_users', 'load', 'oauth_scopes', 'per_page', 'rate_limiting', 'rate_limiting_resettime', 'render_markdown', 'search_code', 'search_commits', 'search_issues', 'search_repositories', 'search_topics', 'search_users']
+
+
+
+Запустить REPL, в котором были бы доступны уствновленны библиотеки
+этого виртуального окружения
+--------------------------------------------------------------------
+
+~/Sandbox/hexlet-python/hexlet_pytest (main)$ poetry shell
+Spawning shell within /home/paalso/Sandbox/hexlet-python/hexlet_pytest/.venv
+. /home/paalso/Sandbox/hexlet-python/hexlet_pytest/.venv/bin/activate
+
+~/Sandbox/hexlet-python/hexlet_pytest (main)$ . /home/paalso/Sandbox/hexlet-python/hexlet_pytest/.venv/bin/activate
+(hexlet-pytest-py3.10) ~/Sandbox/hexlet-python/hexlet_pytest (main)$ python3.10
+Python 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
