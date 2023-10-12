@@ -1,6 +1,4 @@
-import os
-
-from client import Client
+from hexlet_pytest.client import Client
 
 default_client = Client()
 

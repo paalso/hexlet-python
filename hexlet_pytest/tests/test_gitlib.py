@@ -1,6 +1,4 @@
-import pytest
 from hexlet_pytest.gitlib import get_private_fork_names
-
 
 from tests.github_fake import FakeRepo
 from tests.github_fake import GithubFake
