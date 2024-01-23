@@ -27,3 +27,30 @@ def selection_sort(items):
             if items[j] < current:
                 min_id = j
         items[i], items[min_id] = items[min_id], items[i]
+
+
+
+
+def partition(items, left, right, pivot):
+    '''
+    разбить массив на две части таким оборазом,
+    чтобы все в левой части были не больше опорного
+    и не больше всех элементов в правой части
+    '''
+    while True:
+
+        # ищем какую-нибудь пару, для которой левый элемент больше опроного,
+        # а правый элемент меньше опроного
+        while items[left] < pivot:
+            left += 1 
+        while items[right] > pivot:
+            right -= 1 
+
+        if right <= left:
+            return right + 1
+
+        # меняем местами такие элементы
+        if items[right] < items[left]:
+            items[left], items[right] = items[right], items[left]
+            left += 1
+            right -= 1
