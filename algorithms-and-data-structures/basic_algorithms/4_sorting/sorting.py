@@ -38,19 +38,9 @@ def partition(items, left, right, pivot):
     и не больше всех элементов в правой части
     '''
     while True:
-
         # ищем какую-нибудь пару, для которой левый элемент больше опроного,
         # а правый элемент меньше опроного
-        while items[left] < pivot:
-            left += 1 
-        while items[right] > pivot:
-            right -= 1 
+        pass
 
-        if right <= left:
-            return right + 1
-
-        # меняем местами такие элементы
-        if items[right] < items[left]:
-            items[left], items[right] = items[right], items[left]
-            left += 1
-            right -= 1
+def sort_subarray(items, left, right):
+    pass

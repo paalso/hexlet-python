@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from sorting import bubble_sort, bubble_sort_hexlet, selection_sort
-from sorting import partition
+from sorting import partition, sort_subarray
 
 def test_sorting(sort_function):
     items = []
@@ -37,13 +37,16 @@ def main():
     L = [2, 8, 1, 2, 4, 5, 1, 3, 0]
     L = [10, 8, 4, 7, 9, 6, 5]
     L = [5, 4, 10, 1, 8, 2, 7, 9, 6, 3, 4]
+    L = [1, 2, 3, 4, 5]
+    L = [7, 6, 5, 4, 3, 2, 1]
+    L = [1, 6, 5, 2, 2, 4, 8]
     
     print(f'Before:\n', *L)
+    # sort_subarray(L, 0, len(L) - 1)
     
-    pivot = 4
-    id = partition(L, 0, len(L) - 1, pivot)
+    pivot = 2
+    partition(L, 0, len(L) - 1, pivot)
     
-    print(f'id: {id}, element: {L[id]}')
     print(f'After:\n', *L)
 
 
