@@ -1,7 +1,7 @@
 from faker import Faker
 from flask import Flask, request, jsonify, render_template, make_response
-from flask_app.data import generate_companies
-
+from flask_app.data import generate_companies_old, generate_companies
+from flask_app.course import Course
 
 fake = Faker()
 fake.seed_instance(1234)
@@ -18,16 +18,12 @@ available_routes = [
     'json/',
     'html/',
     'not_found',
-    'users/'
+    'users/',
+    '/companies',
 ]
 
+companies_old = generate_companies_old(100)
 companies = generate_companies(100)
-
-
-def get_page_content(data, from_page, per_page):
-    from_id = (from_page - 1) * per_page
-    return data[from_id : from_id + per_page]
-
 
 app = Flask(__name__)
 
@@ -59,11 +55,6 @@ def get_domains():
 @app.route('/message')
 def get_message():
     return message
-
-
-@app.post('/users')
-def users():
-    return 'Users', 302
 
 
 @app.route('/json/')
@@ -101,10 +92,50 @@ def foo():
 def get_companies():
     page = request.args.get('page', 1, int)
     per = request.args.get('per', 5, int)
-    result = jsonify(get_page_content(companies, page, per))
+    result = jsonify(_get_page_content(companies_old, page, per))
     return result
 
 
-@app.route('/courses/<course_id>/lessons/<lesson_id>')
-def courses(course_id, lesson_id):
-    return f'Course id: {course_id}, Lesson id: {lesson_id}'
+@app.route('/companies/<int:company_id>')
+def get_company(company_id):
+    company = _find_by_id(companies, company_id)
+    if company:
+        return company
+    return 'Page not found', 404
+
+
+@app.route('/users/<id>')
+def users(id):
+    return render_template(
+        'index.html',
+        name=id,
+    )
+
+
+@app.route('/courses/')
+def courses():
+    courses = _get_courses() # Возвращает список курсов, которые представлены словарем
+    return render_template(
+        'courses/view.html',
+        courses=courses
+    )
+
+
+def _find_by_id(data, id_):
+    for item in data:
+        if item['id'] == id_:
+            return item
+
+
+def _get_page_content(data, from_page, per_page):
+    from_id = (from_page - 1) * per_page
+    return data[from_id : from_id + per_page]
+
+
+def _get_courses():
+    courses = [
+        Course('1', 'Python for beginners'),
+        Course('2', 'Python for advanced users'),
+        Course('3', 'Python for girls'),
+    ]
+    return courses
