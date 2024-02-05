@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<ul>
+  {% for item in items %}
+  <li>
+    <a href="/{{  dirname }}/{{ item.id }}">{{ item.id }}</a> {{ item.name }}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
