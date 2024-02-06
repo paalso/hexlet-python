@@ -7,6 +7,7 @@ from sorting import (
     bubble_sort_hexlet,
     selection_sort,
     insertion_sort,
+    merge_sort,
     quick_sort,
     quick_sort3
 )
@@ -37,11 +38,11 @@ def test_sorting(sort_function):
     sort_function(items)
     assert items == [1, 2, 3, 4]
 
-    items = [random.randint(1, 1000) for _ in range(10)]
+    items = [random.randint(1, 10_000) for _ in range(10)]
     items_copy = items[:]
     sort_function(items)
     items_copy.sort()
-    print(sort_function.__name__)
+    # print(f'Sort_function: {sort_function.__name__}, result: {items == items_copy}')
     assert items == items_copy
 
 
@@ -49,9 +50,10 @@ def test_sortings():
     test_sorting(bubble_sort)
     test_sorting(bubble_sort_hexlet)
     test_sorting(selection_sort)
+    test_sorting(insertion_sort)
+    test_sorting(merge_sort)
     test_sorting(quick_sort)
     test_sorting(quick_sort3)
-    test_sorting(insertion_sort)
 
 
 def main():
