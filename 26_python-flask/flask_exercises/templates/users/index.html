@@ -13,7 +13,19 @@
     </style>
   </head>
   <body>
+    <form action="/users">
+      <input type="search" name="term" value="{{ search }}">
+      <input type="submit" value="Search">
+      <input type="reset" value="Reset">
+    </form>
     <a href="/users">Пользователи</a>
+
+    <ul>
+      {% for user in users %}
+        <li>{{ full_name(user.first_name, user.last_name) }}</li>
+      {% endfor %}
+      
+    </ul>
     <!-- BEGIN (write your solution here) -->
     <table>
       <tr>

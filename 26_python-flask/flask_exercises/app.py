@@ -77,17 +77,28 @@ def _find_by_id(data, id_):
 # -----------------------------------------------------------------------
         
 
-# Templates
+# Templates, get-form
 # https://ru.hexlet.io/courses/python-flask/lessons/templates/exercise_unit
+# https://ru.hexlet.io/courses/python-flask/lessons/get-form/exercise_unit
 # https://ru.hexlet.io/code_reviews/1310635
+# https://ru.hexlet.io/code_reviews/1317515
 users = generate_users(100)
 
 
 @app.route('/users')
 def get_all_users():
+    filtered_users = users
+
+    term = request.args.get('term')
+    if term:
+        filtered_users = \
+            [user for user in users if 
+             user['first_name'].lower().startswith(term.lower())]
+
     return render_template(
         'users/index.html',
-        users=users,
+        users=filtered_users,
+        search=term or '',
         full_name=full_name
     )
 
