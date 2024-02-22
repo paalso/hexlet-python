@@ -1,5 +1,13 @@
 from faker import Faker
-from flask import Flask, request, jsonify, render_template, make_response
+from flask import (
+    Flask,
+    redirect,
+    request,
+    jsonify,
+    render_template,
+    make_response
+)
+
 from flask_app.data import generate_companies_old, generate_companies
 from flask_app.course import Course
 from flask_app.user import User
@@ -80,11 +88,33 @@ def greet(name):
 
 @app.route('/users')
 def users():
+    name_piece = request.args.get('name_piece')
+    filtered_users = USERS
+
+    if name_piece:
+        filtered_users = [user for user in USERS if name_piece.lower() in user.name.lower()]
+
     return render_template(
         'users/view.html',
         dirname='users',
-        items=USERS
+        items=filtered_users,
+        name_piece=(name_piece or '')
     )
+
+
+@app.post('/users')
+def users_post():
+    repo = UserRepository()
+    user = request.form.to_dict()
+    errors = validate(user)
+    if errors:
+        return render_template(
+          'users/new.html',
+          user=user,
+          errors=errors,
+        )
+    repo.save(user)
+    return redirect('/users', code=302)
 
 
 @app.route('/users/<int:id>')
@@ -105,6 +135,18 @@ def courses():
     return render_template(
         'courses/view.html',
         courses=courses
+    )
+
+
+@app.route('/process')
+def process():
+    data = request.args.get('data')
+    processed_result = ' '.join(token.upper() for token in data.split())
+
+    return render_template(
+        'items_result.html',
+        processed_result=processed_result,
+        data=data,
     )
 
 
