@@ -10,6 +10,7 @@ packages = [{include = "flask_exercises"}]
 python = "^3.10"
 Flask = "^3.0.1"
 Faker = "^22.6.0"
+python-dotenv = "^1.0.1"
 
 
 [build-system]

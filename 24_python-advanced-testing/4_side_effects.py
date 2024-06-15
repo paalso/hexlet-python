@@ -50,3 +50,35 @@ def test_non_default_build_user():
     assert user['hobby'] == ['reading', 'sports']
 # END
 
+# Version # 2
+def test_build_user_returns_correct_structure():
+    user = build_user()
+    schema = Schema({
+        'first_name': str,
+        'last_name': str,
+        'email': str,
+    })
+    assert schema.is_valid(user)
+
+
+def test_build_user_generates_unique_users():
+    user1 = build_user()
+    user2 = build_user()
+    assert user1 != user2
+
+
+def test_build_user_with_preset_keys():
+    preset_first_name = 'Paul'
+    preset_email = 'paul@email.net'
+    user = build_user({'first_name': preset_first_name, 'email': preset_email})
+    assert user['first_name']  == preset_first_name
+    assert user['email']  == preset_email
+
+
+def test_build_user_with_new_preset_keys():
+    hobby = ['cinema', 'sport']
+    user = build_user({'hobby': hobby})
+    assert user['hobby']  == hobby
+
+
+

@@ -1,10 +1,13 @@
+from dotenv import load_dotenv
 from faker import Faker
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
+import os
 
 from flask_exercises.data import (
     generate_companies_old,
     generate_companies_new,
-    generate_users
+    generate_users,
+    Repository
 )
 from flask_exercises.course import Course
 
@@ -26,7 +29,7 @@ def hello_hexlet():
 # 6. Handlers
 # https://ru.hexlet.io/courses/python-flask/lessons/handlers/exercise_unit
 fake = Faker()
-fake.seed_instance(1234)
+fake.seed_instance(123  )
 
 domains = [fake.domain_name() for i in range(10)]
 phones = [fake.phone_number() for i in range(10)]
@@ -122,3 +125,51 @@ def full_name(first_name, last_name):
 def _find_items_by_id(data, key_value, key='id'):
     return list(filter(lambda item: item[key] == key_value, data))
 # -----------------------------------------------------------------------
+
+# post-form
+# https://ru.hexlet.io/courses/python-flask/lessons/post-form/exercise_unit
+
+from flask_exercises.validator import validate
+
+load_dotenv()
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+repo = Repository()
+
+
+@app.get('/courses')
+def courses_get():
+    courses = repo.content()
+    return render_template(
+        'courses/index.html',
+        courses=courses,
+    )
+
+
+@app.get('/courses/new')
+def courses_new():
+    course = {
+        'title': '',
+        'paid': True
+    }
+    errors = {}
+    return render_template(
+        'courses/new.html',
+        course=course,
+        errors=errors
+    )
+
+
+@app.post('/courses')
+def courses_post():
+    course = request.form.to_dict()
+    print(f'course: {course}')
+    errors = validate(course)
+    if errors:
+        print(errors)
+        return render_template(
+            'courses/new.html',
+            course=course,
+            errors=errors
+        ), 422
+    repo.save(course)
+    return redirect('/courses', code=302)

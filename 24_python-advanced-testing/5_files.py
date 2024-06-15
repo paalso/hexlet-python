@@ -64,3 +64,42 @@ def test_prettify(dest_file, expected):
     actual = read(dest_file)
     assert actual == expected
 # END
+
+# Еще версии
+import tempfile
+
+# fixtures_path = 'tests/fixtures'
+fixtures_path = 'fixtures'
+
+
+@pytest.fixture
+def expected_html():
+    with open(os.path.join(fixtures_path, 'after.html')) as file:
+        return file.read()
+
+
+def test_prettify_html1(expected_html):
+    with tempfile.TemporaryDirectory() as temp_dir:
+        shutil.copy(os.path.join(fixtures_path, 'before.html'), temp_dir)
+
+        html_file_path = os.path.join(temp_dir, 'before.html')
+        prettify_html_file(html_file_path)
+
+        with open(html_file_path, 'r') as result_file:
+            result_html_content = result_file.read()
+
+        assert expected_html == result_html_content
+
+
+def test_prettify_html(tmp_path, expected_html):
+    temp_html_file = tmp_path / 'before.html'
+    shutil.copy(os.path.join(fixtures_path, 'before.html'), tmp_path)
+
+    prettify_html_file(temp_html_file)
+
+    result_html_content = temp_html_file.read_text()
+    assert expected_html == result_html_content
+
+
+
+

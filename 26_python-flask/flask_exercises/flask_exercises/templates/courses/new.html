@@ -1,0 +1,49 @@
+<!-- templates/courses/new.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example application</title>
+  </head>
+  <body>
+    <!-- BEGIN (write your solution here) -->
+    <form action="/courses" method="POST">
+      <table>
+        <tr>
+          <td>
+            <label for="title">title</label>
+          </td>
+          <td>
+            <input
+              id="title"
+              type="text"
+              name="title"
+              value="{{ course['title'] }}"
+            />
+            {% if errors['title'] %}
+            <div>{{ errors['title'] }}</div>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="paid">paid</label>
+          </td>
+          <td>
+            <select id="paid" name="paid">
+              <option value="" selected>-- Select an option --</option>
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+            {% if errors['paid'] %}
+            <div>{{ errors['paid'] }}</div>
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit" value="Submit" />
+    </form>
+    <!-- END -->
+  </body>
+</html>

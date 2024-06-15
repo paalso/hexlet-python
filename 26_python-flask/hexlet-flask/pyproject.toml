@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "hexlet-flask"
+version = "0.1.0"
+description = "Example application"
+authors = ["Pavel Soroka <40a.pvl@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^3.0.1"
+Faker = "^22.6.0"
+python-dotenv = "^1.0.1"
+requests = "^2.32.3"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]

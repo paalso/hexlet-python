@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example application</title>
+</head>
+<body>
+    <a href="/courses/new">New course</a>
+    <ul>
+        {% for course in courses %}
+        <li>
+            Title: {{ course['title'] }},
+            {% if course['paid'] == 'false' %}
+            <span><b> free course</b></span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
