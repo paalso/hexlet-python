@@ -8,9 +8,9 @@
     <ul>
         {% for course in courses %}
         <li>
-            Title: {{ course['title'] }},
+            Title: {{ course['title'] }}
             {% if course['paid'] == 'false' %}
-            <span><b> free course</b></span>
+            <span><b>- free course</b></span>
             {% endif %}
         </li>
         {% endfor %}
