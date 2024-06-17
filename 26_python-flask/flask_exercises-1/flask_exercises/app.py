@@ -85,17 +85,17 @@ def _find_by_id(data, id_):
 # https://ru.hexlet.io/courses/python-flask/lessons/get-form/exercise_unit
 # https://ru.hexlet.io/code_reviews/1310635
 # https://ru.hexlet.io/code_reviews/1317515
-users = generate_users(100)
+generated_users = generate_users(100)
 
 
 @app.route('/users')
-def get_all_users():
-    filtered_users = users
+def users():
+    filtered_users = generated_users
 
     term = request.args.get('term')
     if term:
         filtered_users = \
-            [user for user in users if 
+            [user for user in generated_users if 
              user['first_name'].lower().startswith(term.lower())]
 
     return render_template(
@@ -106,14 +106,17 @@ def get_all_users():
     )
 
 
-@app.route('/users/<int:user_id>')
-def get_users_by_id(user_id):
-    filtered_users = _find_items_by_id(users, user_id)
-    if not filtered_users:
+@app.route('/users/<int:id>')
+def user_page(id):
+    filtered_by_id = _find_items_by_id(generated_users, id)
+
+    if not filtered_by_id:
         return 'Page not found', 404
+    
+    user = filtered_by_id[0]
     return render_template(
         'users/show.html',
-        users=filtered_users,
+        user=user,
         full_name=full_name
     )
 
@@ -137,7 +140,7 @@ repo = Repository()
 
 
 @app.get('/courses')
-def courses_get():
+def courses():
     courses = repo.content()
     return render_template(
         'courses/index.html',

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example application</title>
+  </head>
+  <body>
+    <!-- BEGIN (write your solution here) -->
+    <form action="/users">
+      <label for="users">Users:</label>
+      <input id="users" type="text" name="term" value="{{ term }}">
+      <input type="submit" value="Search">
+    </form>
+    <br>
+    <table>
+      {% for user in users %}
+      <tr>
+        <td>
+            <!-- {{ user['id'] }} -->
+            {% set user_id = user['id'] | string %}
+            {{ user_id }}
+        </td>
+        <td>
+            {% set full_name = user['first_name'] + ' ' + user['last_name'] %}
+            {% set user_link = "/users/" + user_id %}
+            <a href="{{ user_link }}">{{ full_name }}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <!-- END -->
+  </body>
+</html>

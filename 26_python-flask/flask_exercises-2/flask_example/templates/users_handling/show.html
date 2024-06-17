@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example application</title>
+  </head>
+  <body>
+    <p><a href="/">Main</a></p>
+    <p><a href="/users">Users</a></p>
+    <table>
+      <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>city</th>
+      </thead>
+      {% for user in users %}
+        <tr>
+          <td>{{ user['id'] }}</td>
+          <td>{{ user['name'] }}</td>
+          <td>{{ user['email'] }}</td>
+          <td>{{ user['city'] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

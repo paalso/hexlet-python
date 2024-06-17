@@ -16,13 +16,13 @@
   <body>
     <a href="/users">Пользователи</a>
     <!-- BEGIN (write your solution here) -->
+    <h3>User # {{ user.id }}</h3> 
     <table>
       <tr>
         <th>id</th>
         <th>name</th>
         <th>email</th>
       </tr>
-      {% for user in users %}
       <tr>
         <td>
             {{ user.id }}
@@ -34,7 +34,6 @@
             {{ user.email }}
         </td>
       </tr>
-      {% endfor %}
     </table>
     <!-- END -->
   </body>

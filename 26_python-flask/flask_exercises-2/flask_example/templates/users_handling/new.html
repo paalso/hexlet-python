@@ -1,0 +1,39 @@
+<!-- templates/users_handling/new.html -->
+<a href="/">Main</a>
+
+<form action="/users" method="post">
+  <div>
+    <label>
+      Имя
+      <input type="text" name="name" value="{{ user.name }}">
+    </label>
+    {% if errors['name'] %}
+      <div>{{ errors['name'] }}</div>
+    {% endif %}
+  </div>
+  <div>
+    <label>
+      Email
+      <input type="email" required name="email" value="{{ user.email }}">
+    </label>
+    {% if errors['email'] %}
+      <div>{{ errors['email'] }}</div>
+    {% endif %}
+    </div>
+  </div>
+  <div>
+    <label>
+      Город
+      <select name="city">
+        <option value="">Location</option>
+        <option {{ 'selected' if city == 3  else '' }} value="3">London</option>
+        <option {{ 'selected' if city == 13  else '' }} value="13">Paris</option>
+        <option {{ 'selected' if city == 399 else '' }} value="399">Berlin</option>
+      </select>
+    </label>
+    {% if errors['city'] %}
+      <div>{{ errors['city'] }}</div>
+    {% endif %}
+  </div>
+  <input type="submit" value="Sign Up">
+</form>

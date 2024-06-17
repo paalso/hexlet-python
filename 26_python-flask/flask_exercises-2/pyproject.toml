@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "flask-example"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Soroka <40a.pvl@gmail.com>"]
+readme = "README.md"
+packages = [{include = "flask_example"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.3"
+faker = "^25.2.0"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

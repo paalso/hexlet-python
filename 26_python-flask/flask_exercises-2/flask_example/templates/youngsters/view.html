@@ -1,0 +1,13 @@
+<!-- youngsters/view.html -->
+
+<form action="/youngsters" method="get">
+  <input type="search" name="term" value="{{ search }}" />
+  <input type="submit" value="Search" />
+</form>
+
+
+<ul>
+  {% for item in youngsters %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>

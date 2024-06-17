@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example application</title>
+  </head>
+  <body>
+    <a href="/users">Пользователи</a>
+    <!-- BEGIN (write your solution here) -->
+    {% set user_full_name = user['first_name'] + ' ' + user['last_name'] %}
+    {% set user_id = user['id'] | string %}
+    {% set user_email = user['email'] %}
+
+    <h1>{{ user_full_name }}, id: {{ user_id }}</h1>
+    <p>email: {{ user_email }}</p>
+    <!-- END -->
+  </body>
+</html>

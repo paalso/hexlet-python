@@ -1,0 +1,26 @@
+Session:
+<SecureCookieSession {'118ae376-af94-44b0-86e0-3bb655e56918': {'id': '118ae376-af94-44b0-86e0-3bb655e56918', 'name': 'Jane'}, '23f11777-e30a-403f-a6da-6dcae0708835': {'id': '23f11777-e30a-403f-a6da-6dcae0708835', 'name': 'Jane'}, '4150ae36-09e3-4927-bdf9-205162ce2b08': {'id': '4150ae36-09e3-4927-bdf9-205162ce2b08', 'name': 'John'}, '46422e83-129e-4d4f-b296-0e16daa31848': {'id': '46422e83-129e-4d4f-b296-0e16daa31848', 'name': 'Jane'}, 'd6fd4db6-e050-4ca2-b3d0-0ffc12b872e4': {'id': 'd6fd4db6-e050-4ca2-b3d0-0ffc12b872e4', 'name': 'John'}, 'f05044de-ba81-43ba-ace7-2217972710b0': {'id': 'f05044de-ba81-43ba-ace7-2217972710b0', 'name': 'John'}, 'user_id': '0aee49ea-457f-4eb6-8415-7818b8344d84', 'user_name': 'John Doe'}>
+
+type(session): <class 'werkzeug.local.LocalProxy'>
+
+session values: dict_values(
+    [
+        {'id': '118ae376-af94-44b0-86e0-3bb655e56918', 'name': 'Jane'},
+        {'id': '23f11777-e30a-403f-a6da-6dcae0708835', 'name': 'Jane'},
+        {'id': '4150ae36-09e3-4927-bdf9-205162ce2b08', 'name': 'John'},
+        {'id': '46422e83-129e-4d4f-b296-0e16daa31848', 'name': 'Jane'},
+        {'id': 'd6fd4db6-e050-4ca2-b3d0-0ffc12b872e4', 'name': 'John'},
+        {'id': 'f05044de-ba81-43ba-ace7-2217972710b0', 'name': 'John'}, '0aee49ea-457f-4eb6-8415-7818b8344d84', 'John Doe
+    ]
+)
+
+
+session values: dict_values(
+    [
+        {'id': '118ae376-af94-44b0-86e0-3bb655e56918', 'name': 'Jane'},
+        {'id': '23f11777-e30a-403f-a6da-6dcae0708835', 'name': 'Jane'},
+        {'id': '4150ae36-09e3-4927-bdf9-205162ce2b08', 'name': 'John'},
+        {'id': '46422e83-129e-4d4f-b296-0e16daa31848', 'name': 'Jane'},
+        {'id': 'd6fd4db6-e050-4ca2-b3d0-0ffc12b872e4', 'name': 'John'},
+        {'id': 'f05044de-ba81-43ba-ace7-2217972710b0', 'name': 'John'},
+        '4fac38cd-167a-415c-9a0c-3e5c6e29a883', 'John Doe'])
