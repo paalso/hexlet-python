@@ -1,6 +1,15 @@
 from dotenv import load_dotenv
 from faker import Faker
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    render_template,
+    redirect,
+    url_for,
+    flash,
+    get_flashed_messages
+)
 import os
 
 from flask_exercises.data import (
@@ -16,6 +25,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    print(app.secret_key)
     return render_template('index.html')
 
 
@@ -179,6 +189,27 @@ def courses_post():
 
 
 # -----------------------------------------------------------------------
+@app.post('/foo')
+def foo():
+    # Добавление флеш-сообщения.
+    # Оно станет доступным только на следующий HTTP-запрос.
+    # 'success' — тип флеш-сообщения. Используется при выводе для форматирования.
+    # Например, можно ввести тип success и отражать его зеленым цветом. На Хекслете такого много.
+    flash('This is a message', 'success')
+    return redirect('/bar')
+
+
+@app.get('/bar')
+def bar():
+    # Извлечение flash-сообщений, которые установлены на предыдущем запросе
+    messages = get_flashed_messages(with_categories=True)
+    print(messages)  # => [('success', 'This is a message')]
+    return render_template(
+        'bar.html',
+        messages=messages,
+    )
+
+
 @app.get('/goodbye')
 def goodbye():
     return 'Goodbye!'
