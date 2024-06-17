@@ -18,7 +18,8 @@
       <input type="submit" value="Search">
       <input type="reset" value="Reset">
     </form>
-    <a href="/users">Пользователи</a>
+
+    <a href="{{ url_for('users') }}">Пользователи</a>
 
     <!-- BEGIN (write your solution here) -->
     <table>
@@ -32,7 +33,7 @@
             {{ user.id }}
         </td>
         <td>
-          <a href="/users/{{ user.id }}">{{ full_name(user.first_name, user.last_name) }}</a>
+          <a href="{{ url_for('user_page', id=user.id) }}">{{ full_name(user.first_name, user.last_name) }}</a>
         </td>
       </tr>
       {% endfor %}

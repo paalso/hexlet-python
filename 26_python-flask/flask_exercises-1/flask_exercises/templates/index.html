@@ -5,11 +5,12 @@
   </head>
   <body>
     <ul style="list-style: none; line-height: 2em;">
-        <li><a href='/phones'>Phones</a></li>
-        <li><a href='/domains'>Domains</a></li>
-        <li><a href='/companies'>Companies</a></li>
-        <li><a href='/users'>Users</a></li>
-        <li><a href='/courses'>Courses</a></li>
+        <li><a href="{{ url_for('get_phones') }}">Phones</a></li>
+        <li><a href="{{ url_for('get_domains') }}">Domains</a></li>
+        <li><a href="{{ url_for('get_companies') }}">Companies</a></li>
+        <li><a href="{{ url_for('users') }}">Users</a></li>
+        <li><a href="{{ url_for('courses') }}">Courses</a></li>
+        <li><a href="{{ url_for('goodbye') }}">Goodbye</a></li>
     </ul>
   </body>
 </html>

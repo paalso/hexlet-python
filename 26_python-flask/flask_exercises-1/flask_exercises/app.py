@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from faker import Faker
-from flask import Flask, request, jsonify, render_template, redirect
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import os
 
 from flask_exercises.data import (
@@ -175,4 +175,10 @@ def courses_post():
             errors=errors
         ), 422
     repo.save(course)
-    return redirect('/courses', code=302)
+    return redirect(url_for('courses'), code=302)
+
+
+# -----------------------------------------------------------------------
+@app.get('/goodbye')
+def goodbye():
+    return 'Goodbye!'

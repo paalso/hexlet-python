@@ -14,9 +14,8 @@
     </style>
   </head>
   <body>
-    <a href="/users">Пользователи</a>
+    <a href="{{ url_for('users') }}">Пользователи</a>
     <!-- BEGIN (write your solution here) -->
-    <h3>User # {{ user.id }}</h3> 
     <table>
       <tr>
         <th>id</th>
