@@ -12,5 +12,9 @@
         <li><a href="{{ url_for('courses') }}">Courses</a></li>
         <li><a href="{{ url_for('goodbye') }}">Goodbye</a></li>
     </ul>
+
+    <form action="{{ url_for('foo') }}" method="post">
+      <button type="submit">Send POST request to /foo</button>
+    </form>
   </body>
 </html>

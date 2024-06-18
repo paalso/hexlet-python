@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Example application</title>
-</head>
-<body>
+  </head>
+  <style>
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    .flashes {
+      list-style-type: none;
+    }
+  </style>
+
+  <body>
     <a href="{{ url_for('courses_new') }}">New course</a>
-    <ul>
-        {% for course in courses %}
-        <li>
-            Title: {{ course['title'] }}
-            {% if course['paid'] == 'false' %}
-            <span><b>- free course</b></span>
-            {% endif %}
-        </li>
-        {% endfor %}
+    {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
     </ul>
-</body>
+    {% endif %}
+    <ul>
+      {% for course in courses %}
+      <li>
+        Title: {{ course['title'] }} {% if course['paid'] == 'false' %}
+        <span><b>- free course</b></span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
 </html>

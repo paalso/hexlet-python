@@ -152,9 +152,12 @@ repo = Repository()
 @app.get('/courses')
 def courses():
     courses = repo.content()
+    messages = get_flashed_messages(with_categories=True)
+    print(messages) 
     return render_template(
         'courses/index.html',
         courses=courses,
+        messages=messages
     )
 
 
@@ -175,18 +178,32 @@ def courses_new():
 @app.post('/courses')
 def courses_post():
     course = request.form.to_dict()
-    print(f'course: {course}')
     errors = validate(course)
     if errors:
-        print(errors)
+        flash('Some errors happened while creating', 'error')
+        messages = _print_errors_to_console(errors)
         return render_template(
             'courses/new.html',
             course=course,
-            errors=errors
+            errors=errors,
+            messages=messages
         ), 422
     repo.save(course)
+    flash('Course created successfully', 'success')
     return redirect(url_for('courses'), code=302)
 
+
+def _print_errors_to_console(errors):
+    print()
+    print(f'errors:{errors}')
+    print()
+    messages = messages_with_categories = get_flashed_messages(with_categories=True)
+    print(f'messages with categories: {messages_with_categories}')
+    messages_without_categories = get_flashed_messages(with_categories=False)
+    print()
+    print(f'messages without categories: {messages_without_categories}')
+    print()
+    return messages
 
 # -----------------------------------------------------------------------
 @app.post('/foo')
@@ -196,6 +213,7 @@ def foo():
     # 'success' — тип флеш-сообщения. Используется при выводе для форматирования.
     # Например, можно ввести тип success и отражать его зеленым цветом. На Хекслете такого много.
     flash('This is a message', 'success')
+    flash('another message', 'error')
     return redirect('/bar')
 
 
