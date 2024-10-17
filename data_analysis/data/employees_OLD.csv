@@ -1,0 +1,14 @@
+id,name,department,manager_id
+101,Alice,Sales,null
+102,Mike,Sales,101
+103,John,Sales,101
+104,Bob,Sales,101
+105,Frank,Sales,101
+201,Jane,Dev,null
+202,Sarah,Dev,201
+203,Kate,Dev,null
+204,Shawn,Dev,203
+301,Kent,HR,null
+302,Phillip,HR,301
+303,Mark,HR,301
+304,Carl,HR,301

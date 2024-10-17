@@ -14,6 +14,12 @@
 этом списке содержит указание основного языка репозитория. Эта информация
 используется для поиска того языка, который используется чаще. Если список
 репозиториев пуст, функция возвращает None. Замените клиент тестовым двойником:
+
+Т.е. тестируемая функция устроена так, что где-то внутри себя (!!!) получает
+от client с помощью метода client.list_for_users
+список информации о репозиториях в определенном формате:
+client.list_for_usersuser_name) -> [{ "language": "php", ... }, { "language": "javascript", ... }, ...]
+и нужно имитировать некий клиент FakeClient, который бы обеспечивал такой интерфейс
 '''
 
 class FakeClient:
@@ -28,6 +34,18 @@ from fake_client import FakeClient
 from functions import get_function
 
 get_user_main_language = get_function()
+
+
+def test_get_user_main_language():
+    data = [{ "language": "php" }, { "language": "js" }, { "language": "js" }]
+    client = FakeClient(data)
+    most_used_language = get_user_main_language("hexlet", client)
+    assert most_used_language ==  "js"
+
+    data = []
+    client = FakeClient(data)
+    most_used_language = get_user_main_language("hexlet", client)
+    assert most_used_language is None
 
 
 # BEGIN (write your solution here)
