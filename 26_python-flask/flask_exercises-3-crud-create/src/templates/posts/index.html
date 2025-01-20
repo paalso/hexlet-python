@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <a href="/posts/new">Create post</a>
+
+  {% if messages %}
+  <ul>
+    {% for category, message in messages %}
+    <li
+    class="{{ category }}"
+    style="list-style-type: none; color: green;"
+    >
+      {{ message }}
+    </li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+
+  <ul>    
+  {% for post in posts %}
+    <li>
+      <h3>{{ post.title }}</h3>
+      <div>
+        {{ post.body }}
+      </div>
+      <span>- - - - - - - - - - - - - - - - - - - - - - - - - - - - </span>
+    </li>
+  {% endfor %}
+  </ul>
+{% endblock %}

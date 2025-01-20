@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+  <a href="{{ url_for('posts_get') }}">Posts</a>
+
+  <!-- BEGIN (write your solution here) -->
+  <div>New post:</div>
+  <form action="{{ url_for('posts_post') }}" method="post">
+    <table>
+      <tr>
+        <td>
+          <label for="title">Title</label>
+        </td>
+        <td>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            value="{{ post.title|default('') }}"
+            style="padding: 10px;">
+        </td>
+        <td>
+          {{ errors.title|default('') }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="body">Text</label>
+        </td>
+        <td>
+          <textarea
+            id="body"
+            name="body"
+            cols="50"
+            rows="10"
+            style="padding: 10px;">
+            {{ post.body|default('') }}
+          </textarea>
+        </td>
+        <td>
+          {{ errors.body|default('') }}
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="Post">
+  </form>
+  <!-- END -->
+{% endblock %}
+
+
