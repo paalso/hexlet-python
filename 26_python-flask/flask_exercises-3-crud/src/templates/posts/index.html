@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <ul>
+    {% for element in collection %}
+      <li>
+        <a href="{{ url_for('posts_show', slug=element.slug) }}">
+          {{ element.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{{ url_for('posts_index', page=page - 1, per=per) }}">назад</a>
+  <br>
+  <a href="{{ url_for('posts_index', page=page + 1, per=per) }}">вперед</a>
+
+  {% endblock %}

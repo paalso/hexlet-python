@@ -1,0 +1,19 @@
+[project]
+name = "flask-exercises-3-rcud"
+version = "0.1.0"
+description = "Example application"
+authors = ["paalso <40a.pvl@gmail.com>"]
+readme = "README.md"
+requires-python = ">=3.11.4"
+
+dependencies = [
+    "faker>=33.1.0",
+    "flask>=3.1.0",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.1",
+]
