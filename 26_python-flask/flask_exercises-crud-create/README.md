@@ -4,9 +4,11 @@
 ##### [CRUD: Создание](https://ru.hexlet.io/courses/python-flask/lessons/crud-create/theory_unit)
 
 [Упражение](https://ru.hexlet.io/courses/python-flask/lessons/crud-create/exercise_unit)
+
 [Решение](https://ru.hexlet.io/code_reviews/1688196)
 
 ##### [CRUD: Создание](https://ru.hexlet.io/courses/python-flask/lessons/crud-create/theory_unit)
 
 [Упражение](https://ru.hexlet.io/courses/python-flask/lessons/crud-create/exercise_unit)
+
 [Решение](https://ru.hexlet.io/code_reviews/1688196)
