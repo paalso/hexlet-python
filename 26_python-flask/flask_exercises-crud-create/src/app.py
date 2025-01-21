@@ -4,6 +4,7 @@ from flask import (
     Flask,
     flash,
     get_flashed_messages,
+    make_response,
     redirect,
     render_template,
     request,
@@ -34,7 +35,6 @@ def posts_get():
     )
 
 
-# BEGIN (write your solution here)
 @app.get('/posts/new')
 def posts_new():
     post = {}
@@ -48,17 +48,52 @@ def posts_new():
 
 @app.post('/posts')
 def posts_post():
-    post = request.form.to_dict()
-    errors = validate(post)
+    repo = PostsRepository()
+    data = request.form.to_dict()
+    errors = validate(data)
     if errors:
         return render_template(
-                'posts/new.html',
-                errors=errors,
-                post=post
+            'posts/new.html',
+            post=data,
+            errors=errors,
             ), 422
-
-    repo = PostsRepository()
-    repo.save(post)
+    id = repo.save(data)
     flash('Post has been created', 'success')
+    resp = make_response(redirect(url_for('posts_get')))
+    resp.headers['X-ID'] = id
+    return resp
+
+
+# BEGIN (write your solution here)
+@app.route('/posts/<id>/update')
+def posts_edit(id): 
+    repo = PostsRepository()
+    try:
+        post = repo.find(id)
+        return render_template(
+            'posts/edit.html',
+            post=post
+        )
+    except KeyError:
+        return 'Page not found', 404
+    
+
+@app.route('/posts/<id>/update', methods=['post'])
+def posts_patch(id):
+    data = request.form.to_dict()
+    repo = PostsRepository()
+    post = repo.find(id)
+    errors = validate(data)
+    if errors:
+        return render_template(
+            'posts/edit.html',
+            post=post,
+            errors=errors
+        ), 422
+
+    post.update(data)
+    repo.save(post)
+    flash('Post has been updated', 'success')
+
     return redirect(url_for('posts_get'))
 # END

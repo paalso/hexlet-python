@@ -5,10 +5,7 @@
   {% if messages %}
   <ul>
     {% for category, message in messages %}
-    <li
-    class="{{ category }}"
-    style="list-style-type: none; color: green;"
-    >
+    <li class="{{ category }}">
       {{ message }}
     </li>
   {% endfor %}
@@ -18,11 +15,12 @@
   <ul>    
   {% for post in posts %}
     <li>
-      <h3>{{ post.title }}</h3>
+      <h2>{{ post.title }}</h2>
+      <h4>{{ post.id }}</h4>
       <div>
         {{ post.body }}
       </div>
-      <span>- - - - - - - - - - - - - - - - - - - - - - - - - - - - </span>
+      <a href="{{ url_for('posts_patch', id=post.id) }}">Edit</a>
     </li>
   {% endfor %}
   </ul>

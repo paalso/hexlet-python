@@ -3,10 +3,10 @@
 
 <!-- BEGIN (write your solution here) -->
 <div>New post:</div>
-<form action="{{ url_for('posts_post') }}" method="post">
+<form action="{{ url_for('posts_patch', id=post.id) }}" method="post">
   {% include "posts/form.html" %}
 
-  <input type="submit" value="Create" />
+  <input type="Submit" value="Update" />
 </form>
 <!-- END -->
 {% endblock %}
