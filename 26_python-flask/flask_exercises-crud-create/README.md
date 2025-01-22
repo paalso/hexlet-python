@@ -12,3 +12,9 @@
 [Упражение](https://ru.hexlet.io/courses/python-flask/lessons/crud-update/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1689254)
+
+##### [CRUD: Удаление](https://ru.hexlet.io/courses/python-flask/lessons/crud-delete/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-flask/lessons/crud-delete/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1690119)

@@ -56,44 +56,62 @@ def posts_post():
             'posts/new.html',
             post=data,
             errors=errors,
-            ), 422
+        ), 422
     id = repo.save(data)
     flash('Post has been created', 'success')
+    print(f'Post has been created\nid:{id}\ndata:{data}')
     resp = make_response(redirect(url_for('posts_get')))
     resp.headers['X-ID'] = id
     return resp
 
 
-# BEGIN (write your solution here)
-@app.route('/posts/<id>/update')
-def posts_edit(id): 
-    repo = PostsRepository()
-    try:
-        post = repo.find(id)
-        return render_template(
-            'posts/edit.html',
-            post=post
-        )
-    except KeyError:
-        return 'Page not found', 404
-    
-
-@app.route('/posts/<id>/update', methods=['post'])
-def posts_patch(id):
-    data = request.form.to_dict()
+@app.route('/posts/<id>/update', methods=['GET', 'POST'])
+def post_update(id):
     repo = PostsRepository()
     post = repo.find(id)
-    errors = validate(data)
-    if errors:
+    errors = []
+
+    if request.method == 'GET':
         return render_template(
-            'posts/edit.html',
-            post=post,
-            errors=errors
-        ), 422
+                'posts/edit.html',
+                post=post,
+                errors=errors,
+                data=post,
+                )
 
-    post.update(data)
-    repo.save(post)
-    flash('Post has been updated', 'success')
+    if request.method == 'POST':
+        data = request.form.to_dict()
 
+        errors = validate(data)
+        if errors:
+            return render_template(
+                'posts/edit.html',
+                post=post,
+                data=data,
+                errors=errors,
+                ), 422
+
+        post['title'] = data['title']
+        post['body'] = data['body']
+        repo.save(post)
+        flash('Post has been updated', 'success')
+        return redirect(url_for('posts_get'))
+
+
+@app.route('/posts/count')
+def posts_count():
+    repo = PostsRepository()
+    count = len(repo.content())
+    print(count)
+    return {'count': count}
+
+
+@app.post('/posts/<id>/delete')
+def post_delete(id):
+    repo = PostsRepository()
+    try:
+        repo.destroy(id)
+        flash('Post has been removed', 'success')
+    except Exception:
+        flash(f'Failed to remove post {id}', 'error')
     return redirect(url_for('posts_get'))
-# END
