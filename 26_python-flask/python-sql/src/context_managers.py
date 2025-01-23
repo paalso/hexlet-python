@@ -34,42 +34,24 @@ def initialize_database(conn, sql_file_path):
         conn.rollback()
 
 
-def get_all_movies(conn):
-    sql = 'SELECT * FROM movies'
-    cursor = conn.cursor()
-    cursor.execute(sql)
-    result = [row for row in cursor]
-    cursor.close()
-    return result
-
-
-def add_movies(conn):
+def get_all_cars(conn):
     sql = '''
-        INSERT INTO movies
-            (title, release_year, duration)
-        VALUES
-            ('Godfather', 1972, 175),
-            ('The Green Mile', 1999, 189);'''
-
+        SELECT * FROM cars
+        ORDER BY brand'''
     cursor = conn.cursor()
-    cursor.execute(sql)
-    cursor.close()
+    with cursor:
+        cursor.execute(sql)
+        return(list(cursor))
 
 
 def main():
     conn = connect()
-    if conn:
-        sql_file_path = "init.sql"
+    with conn:
+        sql_file_path = "init_cars.sql"
         initialize_database(conn, sql_file_path)
-        print(get_all_movies(conn))
-        add_movies(conn)
-        print(get_all_movies(conn))
-        conn.commit()
-        conn.close()
+
+        print(get_all_cars(conn))
 
 
 if __name__ == '__main__':
     main()
-
-
-# https://ru.hexlet.io/code_reviews/1691518
