@@ -59,7 +59,7 @@ def add_movies(conn):
 def main():
     conn = connect()
     if conn:
-        sql_file_path = "init_movies.sql"
+        sql_file_path = "init.sql"
         initialize_database(conn, sql_file_path)
         print(get_all_movies(conn))
         add_movies(conn)
@@ -70,3 +70,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# https://ru.hexlet.io/code_reviews/1691518
