@@ -12,3 +12,9 @@
     [Упражнение](https://ru.hexlet.io/courses/python-sql/lessons/context-managers/exercise_unit)
 
     [Решение](https://ru.hexlet.io/code_reviews/1691565)
+
+- ##### [Запросы](https://ru.hexlet.io/courses/python-sql/lessons/query/theory_unit)
+
+    [Упражнение](https://ru.hexlet.io/courses/python-sql/lessons/query/exercise_unit)
+
+    [Решение](https://ru.hexlet.io/code_reviews/1692823)
