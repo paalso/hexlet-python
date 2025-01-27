@@ -1,0 +1,393 @@
+
+HTTP 1.0
+=========
+telnet localhost 8000
+
+GET /index HTTP/1.0
+GET /domains HTTP/1.0
+
+
+Упражнение
+-----------
+Используя программу telnet, выполните запрос к localhost на порт 8080 в терминале онлайн редактора. Параметры запроса: метод get, страница /about, протокол http 1.0.
+Запишите ваш HTTP-запрос в файл solution (Запуск telnet, сам по себе, никак не связан с HTTP).
+
+telnet localhost 8080
+
+GET /about HTTP/1.0
+
+
+HTTP 1.1
+=========
+
+telnet example.com 80
+GET / HTTP/1.0
+
+Упражнение
+-----------
+Используя telnet выполните запрос к hexlet.local (расположен на localhost) на порт 8080. Параметры запроса: метод GET, страница /, протокол HTTP 1.1;
+
+telnet localhost 8080
+
+GET / HTTP/1.1
+host: hexlet.local
+
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 12
+Date: Thu, 24 Oct 2024 15:17:12 GMT
+Connection: keep-alive
+Keep-Alive: timeout=72
+
+You've done!
+
+
+Тело HTTP-запроса
+===================
+
+Упражнение
+-----------
+
+Используя telnet выполните запрос к hexlet.local (расположен на localhost) на порт 8080. Параметры запроса: метод POST, страница /upload, протокол HTTP 1.1, тело: my request body. Не забудьте установить заголовки необходимые для отправки body;
+Запишите ваш HTTP-запрос в файл solution;
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connection failed: Connection refused
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+POST /upload HTTP/1.1
+host: hexlet.local
+content-length: 15
+content-type: text/plain
+
+my request body
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 15
+Date: Fri, 25 Oct 2024 14:18:14 GMT
+Connection: keep-alive
+Keep-Alive: timeout=0
+
+my request bodyConnection closed by foreign host.
+/usr/src/app$ 
+
+
+Отправка форм
+==============
+
+Упражнение
+-----------
+Выполните авторизацию на сайте hexlet.local (расположен на localhost:8080). Для этого отправьте следующие данные формы: username со значением admin, password со значением secret на урл /session/new. Используйте метод POST и тип application/x-www-form-urlencoded, протокол HTTP 1.1;
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+POST /session/new HTTP/1.1
+Host: hexlet.local
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 30
+
+username=admin&password=secret
+HTTP/1.1 200 OK
+connection: close
+content-type: text/plain; charset=utf-8
+content-length: 15
+Date: Fri, 24 Jan 2025 09:13:26 GMT
+
+You've done it!Connection closed by foreign host.
+
+
+/usr/src/app$ curl -X POST -d "username=admin&password=secret" localhost:8080/session/newlocalhost:8080/session/new
+You've done it!
+
+
+Transfer-Encoding 
+==================
+
+Упражнение
+-----------
+
+Используя telnet выполните запрос к hexlet.local (расположен на localhost) на порт 8080. Параметры запроса: метод GET, страница /stream, протокол HTTP 1.1;
+
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connection failed: Connection refused
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+GET /stream HTTP/1.1
+Host: hexlet.local
+
+HTTP/1.1 200 OK
+transfer-encoding: chunked
+connection: close
+content-type: text/html
+Date: Fri, 24 Jan 2025 08:58:08 GMT
+
+45
+Pogej gihifa biewi te hen gunse tenbel kele ilezos bemaj zivzaggo ot.
+4c
+Nuwir bazikowe refome obu te nen didlecbun nu acicat geubuho mi ot pu ajnat.
+4c
+Bar horbidwuh rabwamape etuni ufozecag ro kemor to zac hiuwjah tisa fuedead.
+49
+Uz boj asaniput igeb obefur ujavik eg riku nejeg ve boveiku gugvil isiah.
+63
+Bovpewme up moujji ivedi kipiwoh ojemelop ipo kipsaf agauleli he icike ziliti ibalud helzas uf nib.
+52
+Cenebuta dancome jokej amifep noukdu koghug afe zam eghugov ogavuvuc jaefa esoefa.
+6e
+Cofuz rizhe uruus ozse liumamij gat codsoba te okajoke wahuoju kek izwilmas at jeosga humevec reteibu lutilof.
+48
+Ve lik zodu mije fog zi ibti kajned pobbi azugenom ko jaam mu ti gaw po.
+51
+Nu vif li goh nav be pus kudzu ul biz va fisgo juwjev vu najit daggima nurjormet.
+55
+Atuci ca bu dujir widofho ranahit jutiziho ilpodfi alosu id leboh voh cizuwutaw hevu.
+0
+
+Connection closed by foreign host.
+
+/usr/src/curl -X GET http://localhost:8080/stream -H "Host: hexlet.local"ocal"
+Ugvim di rew akhasuwi wuk ronlenmal lum etas pawah isawizjej un hoburga ruzne osse.Tid li jaw dig fopa puhosdam kov noho goggo joz nugiha bofe vaz vuj satavja tek tofoc.Gas muj ivi zu po uwhuj biom at hap tejir uromif nofli tiho dizta.Mozna felo utmej cu imeabu del pof he ni ral daop hukkahnih romhu cuz zuh nim.Kovinir sipukoz zuacizor jaw ikeede daeju ro sargoh febepjiz ko ha cotju ceesegi mihu befgas vut sitzu.Iloru waz jo ma aberatbi hikgases wut cu luvoren mihisu rivir dogasu roek gup fim dapamapa codeloc suricvud.Fofeez awpo zul inkukig ekamut filgom zu il ku heapar hampig rur seap binahona egupidop vu.Ejfukfif buwizaz fetjouci mubtunpot gukpih zakub isgaiki ib ef ruzot luba co.Zeruw cattiddu ewju sufka vez luda ag ovi ozo tiwa is zolvilfa cozo iw luj fu.Fefe ibiluze cu icpeub igza sep ganva inauduke abasafa veb patebe iwiegufet badawwo mu vemuz.
+
+
+Передача данных query string
+=============================
+
+Упражнение
+-----------
+Используя telnet выполните запрос к hexlet.local (расположен на localhost) на порт 8080. Передайте в строке запроса следующие параметры: key равный value и another_key равный another_value. Параметры запроса: метод GET, страница /, протокол HTTP 1.1;
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+GET /?key=value&another_key=another_value HTTP/1.1
+Host: hexlet.local
+
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 12
+Date: Fri, 24 Jan 2025 09:25:39 GMT
+Connection: keep-alive
+Keep-Alive: timeout=0
+
+You've done!Connection closed by foreign host.
+
+curl localhost:8080/?key=value&another_key=another_value
+
+
+Перенаправления
+================
+
+~/Downloads $ telnet http.hexlet.app 80
+Trying 2606:4700:3033::6815:46db...
+Connected to http.hexlet.app.
+Escape character is '^]'.
+GET /http-protocol/removed HTTP/1.1
+Host: http.hexlet.app
+Connection: close
+
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 24 Jan 2025 09:30:11 GMT
+Content-Length: 0
+Connection: close
+Location: /http-protocol/example
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=jwHbRrQfG4vxHMNfVI6mJLQlT%2BANJcFY3WxKi%2FTmFywNem1HpD8Hp7Olhtht%2BkZF6oNIkNOcqzZ9yoF7utf5zk55S0DNJk0xzQpZXjsqne5oQtLc8o2mSyfzKHgN4bibIZyhcwE%2Fa0cRMO83cOg%3D"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 906f00d6c9a50247-WAW
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=59786&min_rtt=59786&rtt_var=29893&sent=3&recv=5&lost=0&retrans=0&sent_bytes=0&recv_bytes=81&delivery_rate=0&cwnd=249&unsent_bytes=0&cid=0000000000000000&ts=0&x=0"
+
+Connection closed by foreign host.
+
+
+~/Downloads $ curl -I http.hexlet.app:80/http-protocol/removed
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 24 Jan 2025 09:33:35 GMT
+Content-Length: 0
+Connection: keep-alive
+Location: /http-protocol/example
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=VAmwgzxbwQaupZ8yZNXzxnIfrZsOIaQyO4ntZnAlMzcubXLC6ctoOWUHkQGC9eCbqOBKXYVr9ZNc%2FqRqNCP7nszniAlS0Y8tfLci%2FyAvhMbpzoYBrKrBHwP2QjAfBIMKpjQlC%2BVoCE%2BfjILRhLU%3D"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 906f05d70915348c-WAW
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=59758&min_rtt=59758&rtt_var=29879&sent=1&recv=3&lost=0&retrans=0&sent_bytes=0&recv_bytes=101&delivery_rate=0&cwnd=249&unsent_bytes=0&cid=0000000000000000&ts=0&x=0"
+
+
+Упражнение
+-----------
+Используя telnet выполните запрос к hexlet.local (расположен на localhost) на порт 8080
+Параметры запроса: метод POST, страница /session/new, протокол HTTP 1.1
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connection failed: Connection refused
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+POST /session/new HTTP/1.1
+Host: hexlet.local
+
+HTTP/1.1 302 Found
+connection: close
+location: /
+content-length: 0
+Date: Fri, 01 Nov 2024 16:21:11 GMT
+
+Connection closed by foreign host.
+
+/usr/src/app$ curl -X POST -I localhost:8080/session/new
+HTTP/1.1 302 Found
+connection: close
+location: /
+content-length: 0
+Date: Fri, 24 Jan 2025 09:40:24 GMT
+
+
+Curl
+=====
+
+Упражнение
+-----------
+
+
+Используя curl выполните запрос на получение списка пользователей к localhost на порт 8080 по пути /users. В заголовке запроса сообщите серверу, что ожидаете ответа в формате JSON (тип application/json)
+
+Если запрос успешный, то в терминале упражнения вы увидите список пользователей, который вернул сервер
+
+/usr/src/app$ curl -H "Accept: application/json" localhost:8080/users
+[{"id":1,"name":"John Doe"},{"id":2,"name":"Anna Smith"},{"id":3,"name":"Mike J"}]
+
+Cookies
+========
+
+Упражнение
+-----------
+
+Используя telnet выполните запрос к hexlet.local (расположен на localhost) на порт 8080. Параметры запроса: метод GET, страница /account, протокол HTTP 1.1, куки name со значением user и secret со значением secret_hash;
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+GET /account HTTP/1.1
+Host: hexlet.local
+Cookie: name=user; secret=secret_hash 
+
+HTTP/1.1 200 OK
+connection: close
+content-length: 0
+Date: Sat, 23 Nov 2024 08:52:13 GMT
+
+Connection closed by foreign host.
+
+
+Испытания
+==========
+
+Удалите из каталога книгу "Властелин колец". Для этого вам понадобится отправить DELETE запрос на адрес /books/<id>, где id — это уникальный идентификатор книги в каталоге. Например, DELETE запрос на адрес /books/15 удалит книгу с идентификатором 15. Проблема в том, что мы пока не знаем идентификатор нужной книги, знаем только название. Чтобы узнать идентификатор, сделайте GET запрос к странице каталога /books и посмотрите, какие книги там содержатся, найдите идентификатор "Властелина колец"
+
+usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+GET /books HTTP/1.0
+
+HTTP/1.1 200 OK
+content-type: application/json; charset=utf-8
+x-total-amount: 3
+content-length: 254
+Date: Thu, 24 Oct 2024 16:03:48 GMT
+Connection: close
+
+[
+  {
+    "id": 1,
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy"
+  },
+  {
+    "id": 3,
+    "title": "The Lord of the Rings",
+    "author": "J. R. R. Tolkien"
+  },
+  {
+    "id": 5,
+    "title": "Perfume",
+    "author": "Patrick Suskind"
+  }
+]
+Connection closed by foreign host.
+
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+DELETE /books/3 HTTP/1.0
+
+HTTP/1.1 204 No Content
+Date: Thu, 24 Oct 2024 16:06:17 GMT
+Connection: close
+
+Connection closed by foreign host.
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+GET /books HTTP/1.0
+
+HTTP/1.1 200 OK
+content-type: application/json; charset=utf-8
+x-total-amount: 2
+content-length: 161
+Date: Thu, 24 Oct 2024 16:06:49 GMT
+Connection: close
+
+[
+  {
+    "id": 1,
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy"
+  },
+  {
+    "id": 5,
+    "title": "Perfume",
+    "author": "Patrick Suskind"
+  }
+]
+Connection closed by foreign host.
+
+
+
+
+=========================================================================
+
+telnet example.com  80
+
+GET / HTTP/1.1
+Host: example.com
+
+
+telnet example.com 8080
+
+POST /login HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Content-Length: 85
+
+{
+  "username": "john_doe",
+  "password": "secret"
+}
