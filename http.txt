@@ -254,6 +254,39 @@ content-length: 0
 Date: Fri, 24 Jan 2025 09:40:24 GMT
 
 
+Базовая аутентификация
+=======================
+
+Упражнение
+-----------
+
+Используя telnet авторизуйтесь на hexlet.local (расположен на localhost:8080). Параметры запроса: метод GET, страница /admin, протокол HTTP 1.1, имя пользователя Aladdin, пароль open sesame;
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+GET /admin HTTP/1.1
+Host: hexlet.local
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
+HTTP/1.1 200 OK
+connection: close
+content-type: text/plain; charset=utf-8
+content-length: 15
+Date: Mon, 27 Jan 2025 14:04:33 GMT
+
+Access granted
+Connection closed by foreign host.
+
+
+/usr/src/app$ curl -u "Aladdin:open sesame" localhost:8080/admin
+Access granted
+
+
+
+curl -H "Accept: application/json" localhost:8080/users
+
 Curl
 =====
 
@@ -291,24 +324,69 @@ Date: Sat, 23 Nov 2024 08:52:13 GMT
 
 Connection closed by foreign host.
 
+/usr/src/app$ curl -i -H "Cookie: name=user; secret=secret_hash" localhost:8080/account
+HTTP/1.1 200 OK
+connection: close
+content-length: 0
+Date: Thu, 30 Jan 2025 12:49:48 GMT
+
+
+HTTPS 
+======
+
+Упражнение
+-----------
+
+Сделайте GET запрос на главную страницу сайта hexlet.local (расположен на localhost:8080) с помощью curl. В результате вы должны получить ответ, содержащий заголовки и тело
+
+https://ru.hexlet.io/code_reviews/1699392
+
+/usr/src/app$ curl -i localhost:8080/
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 16
+Date: Thu, 30 Jan 2025 15:34:31 GMT
+Connection: keep-alive
+Keep-Alive: timeout=0
+
+Hello from HTTP!
+
+
+curl -i -k https://localhost:8443
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 17
+Date: Thu, 30 Jan 2025 15:35:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=0
+
+Hello from HTTPS!
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
 Испытания
 ==========
 
-Удалите из каталога книгу "Властелин колец". Для этого вам понадобится отправить DELETE запрос на адрес /books/<id>, где id — это уникальный идентификатор книги в каталоге. Например, DELETE запрос на адрес /books/15 удалит книгу с идентификатором 15. Проблема в том, что мы пока не знаем идентификатор нужной книги, знаем только название. Чтобы узнать идентификатор, сделайте GET запрос к странице каталога /books и посмотрите, какие книги там содержатся, найдите идентификатор "Властелина колец"
+Книжный каталог
+================
 
-usr/src/app$ telnet localhost 8080
+Удалите из каталога книгу "Властелин колец". Для этого вам понадобится отправить DELETE запрос на адрес /books/<id>, где id — это уникальный идентификатор книги в каталоге. Например, DELETE запрос на адрес /books/15 удалит книгу с идентификатором 15. Проблема в том, что мы пока не знаем идентификатор нужной книги, знаем только название. Чтобы узнать идентификатор, сделайте GET запрос к странице каталога /books и посмотрите, какие книги там содержатся, найдите идентификатор "Властелина колец"
+https://ru.hexlet.io/code_reviews/1699412
+
+/usr/src/app$ telnet localhost 8080
 Trying ::1...
 Connected to localhost.
 Escape character is '^]'.
-GET /books HTTP/1.0
+GET /books HTTP/1.1
+Host: hexlet.local
 
 HTTP/1.1 200 OK
 content-type: application/json; charset=utf-8
 x-total-amount: 3
 content-length: 254
-Date: Thu, 24 Oct 2024 16:03:48 GMT
-Connection: close
+Date: Thu, 30 Jan 2025 15:49:27 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
 
 [
   {
@@ -327,34 +405,13 @@ Connection: close
     "author": "Patrick Suskind"
   }
 ]
-Connection closed by foreign host.
 
-
-/usr/src/app$ telnet localhost 8080
-Trying ::1...
-Connected to localhost.
-Escape character is '^]'.
-DELETE /books/3 HTTP/1.0
-
-HTTP/1.1 204 No Content
-Date: Thu, 24 Oct 2024 16:06:17 GMT
+telnet localhost 8080
+DELETE /books/3 HTTP/1.1
+Host: hexlet.local 
 Connection: close
 
-Connection closed by foreign host.
-
-/usr/src/app$ telnet localhost 8080
-Trying ::1...
-Connected to localhost.
-Escape character is '^]'.
-GET /books HTTP/1.0
-
-HTTP/1.1 200 OK
-content-type: application/json; charset=utf-8
-x-total-amount: 2
-content-length: 161
-Date: Thu, 24 Oct 2024 16:06:49 GMT
-Connection: close
-
+/usr/src/app$ curl localhost:8080/books
 [
   {
     "id": 1,
@@ -367,27 +424,52 @@ Connection: close
     "author": "Patrick Suskind"
   }
 ]
-Connection closed by foreign host.
+
+/usr/src/app$ curl localhost:8080/books
+[
+  {
+    "id": 1,
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy"
+  },
+  {
+    "id": 5,
+    "title": "Perfume",
+    "author": "Patrick Suskind"
+  }
+]
+
+/usr/src/app$ curl -X DELETE localhost:8080/books/1
+
+/usr/src/app$ curl localhost:8080/books
+[
+  {
+    "id": 5,
+    "title": "Perfume",
+    "author": "Patrick Suskind"
+  }
+]
+
+/usr/src/app$ curl -i -X DELETE localhost:8080/books/5
+HTTP/1.1 204 No Content
+Date: Thu, 30 Jan 2025 16:01:16 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+/usr/src/app$ curl localhost:8080/books
+[]
 
 
+Защищенный блог
+================
 
+Помимо базовой аутентификации, существует еще и другие способы. Один из них — это авторизация с использованием токена. Bearer token - это метод аутентификации, при котором клиент получает токен после успешной авторизации и передает его в заголовке запроса при каждом запросе на сервер.
 
-=========================================================================
+Чтобы получить токен, нужно пройти авторизацию. Для получения токена при отправке запроса на авторизацию, клиент должен предоставить свои учетные данные (логин и пароль) серверу. После успешной аутентификации сервер создает токен и отправляет его обратно клиенту в теле запроса
 
-telnet example.com  80
+Полученный токен нужно затем передавать в заголовке каждого запроса в поле Authorization с префиксом Bearer. Например, Authorization: Bearer <токен>. Таким образом сервер сможет идентифицировать клиента и предоставить доступ к защищенным ресурсам.
 
-GET / HTTP/1.1
-Host: example.com
+В этом упражнении мы получим список всех статей в блоге. Поскольку это защищенная информация, доступ к статьям предоставляется только пользователям, прошедшим аутентификацию на сайте
+solution
 
-
-telnet example.com 8080
-
-POST /login HTTP/1.1
-Host: example.com
-Content-Type: application/json
-Content-Length: 85
-
-{
-  "username": "john_doe",
-  "password": "secret"
-}
+Выполните аутентификацию на сайте hexlet.local (расположен на localhost:8080) и получите Bearer token. Для этого отправьте следующие данные формы: username со значением admin, password со значением qwerty на адрес login. Используйте метод POST и тип application/x-www-form-urlencoded, протокол HTTP 1.1. В ответ на этот запрос, если все данные введены корректно, сервер отправит вам токен
