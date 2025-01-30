@@ -1,0 +1,7 @@
+{% extends 'layouts/layout.html' %}
+{% block content %}
+<a href="{{ url_for('products') }}">Products</a>
+<div>
+    <h1>Title: {{ product.title }} - Price: {{ product.price }}</h1>
+</div>
+{% endblock %}
