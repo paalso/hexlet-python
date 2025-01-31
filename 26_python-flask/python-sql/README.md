@@ -18,3 +18,16 @@
     [Упражнение](https://ru.hexlet.io/courses/python-sql/lessons/query/exercise_unit)
 
     [Решение](https://ru.hexlet.io/code_reviews/1692823)
+
+- ##### [Курсор](https://ru.hexlet.io/courses/python-sql/lessons/cursor/exercise_unit)
+
+    [Упражнение](https://ru.hexlet.io/courses/python-sql/lessons/cursor/exercise_unit)
+
+    [Решение](https://ru.hexlet.io/code_reviews/1699495)
+
+- ##### [Транзакции](https://ru.hexlet.io/courses/python-sql/lessons/transaction/theory_unit)
+
+    [Упражнение](https://ru.hexlet.io/courses/python-sql/lessons/transaction/exercise_unit)
+
+    [Решение](https://ru.hexlet.io/code_reviews/1700329)
+

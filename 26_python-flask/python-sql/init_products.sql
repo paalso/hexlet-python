@@ -6,3 +6,10 @@ CREATE TABLE products (
     price NUMERIC NOT NULL,
     quantity INT NOT NULL
 );
+
+
+
+INSERT INTO products
+    (name, price, quantity)
+VALUES
+    %s

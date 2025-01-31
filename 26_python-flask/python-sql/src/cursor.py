@@ -20,56 +20,31 @@ def connect():
     return conn
 
 
-def initialize_database(conn, sql_file_path):
-    try:
-        # Чтение SQL-скрипта из файла
-        with open(sql_file_path, 'r') as sql_file:
-            sql_script = sql_file.read()
-        
-        # Выполнение SQL-скрипта
-        with conn.cursor() as cursor:
-            cursor.execute(sql_script)
-            conn.commit()
-            print("Database initialized successfully")
-    except Exception as e:
-        print(f"Error during database initialization: {e}")
-        conn.rollback()
+# принимает соединение и месяц
+# возвращает общую сумму заказов каждого покупателя за этот месяц
+def get_order_sum(conn, month):
+    query = f'''SELECT c.customer_name, SUM(o.total_amount)
+                FROM customers c JOIN orders o ON c.customer_id = o.customer_id
+                WHERE EXTRACT(MONTH FROM o.order_date) = {month}
+                GROUP BY c.customer_name;'''
 
-
-def insert_hacker_data(conn):
-    name = ") INSERT INTO users (username, phone) VALUES ('i am hacker', '777777')"
-    name = "somename', ''); INSERT INTO users (username, phone) VALUES ('i am superhacker', '1488-1488'); --"
-    phone = '1234'
-    sql = f"INSERT INTO users (username, phone) VALUES ('{name}', '{phone}');"
-
-    with conn:
-        with conn.cursor() as cursor:
-            cursor.execute(sql)
-            conn.commit()
-    conn.close()
-
-
-def get_all_products(conn):
     with conn.cursor() as cursor:
-        cursor.execute('SELECT * FROM products ORDER BY price DESC')
+        cursor.execute(query)
+        query_result = cursor.fetchall()
         conn.commit()
-        result = cursor.fetchall()
-    return result
+
+    report = '\n'.join(
+        f'Покупатель {name} совершил покупок на сумму {int(sum)}'
+        for name, sum in query_result
+    )
+
+    return report
 
 
 def main():
     conn = connect()
-
-    query1 = 'SELECT * FROM products'
-    query2 = '''SELECT MAX(price * quantity)
-                FROM products'''
-
-    with conn.cursor(cursor_factory=NamedTupleCursor) as cursor:
-        cursor.execute(query2)
-        data = cursor.fetchall()
-    
-    print(data)
-    print(data[0].max)
+    month = 2
+    print(get_order_sum(conn, month))
 
     conn.close()
 
