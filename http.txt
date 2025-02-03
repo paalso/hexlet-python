@@ -477,3 +477,201 @@ solution
 
 * Получите на сайте hexlet.local список всех статей в блоге. Отправьте GET запрос на адрес /posts. Чтобы сервер мог идентифицировать нас, используйте в запросе заголовок Authorization с полученным токеном в качестве значения. Не забудьте добавить префикс Bearer. Запрос на получение списка статей скопируйте в файл solution. Запрос должен быть для telnet
 
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+POST /login
+Host: hexlet.local
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 30
+
+username=admin&password=qwerty
+HTTP/1.1 200 OK
+connection: close
+content-type: text/plain; charset=utf-8
+content-length: 152
+Date: Fri, 31 Jan 2025 15:20:24 GMT
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJleGVyY2lzZSIsIm5hbWUiOiJoZXhsZXQiLCJpYXQiOjE1MTgyMzQ1OTkxfQ.8wLn2cpbVhnwU-J8fSjvBcM8KGMb6Db4dKQVyYaryCo
+Connection closed by foreign host.
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+GET /posts
+Host: hexlet.local
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJleGVyY2lzZSIsIm5hbWUiOiJoZXhsZXQiLCJpYXQiOjE1MTgyMzQ1OTkxfQ.8wLn2cpbVhnwU-J8fSjvBcM8KGMb6Db4dKQVyYaryCo
+
+HTTP/1.1 200 OK
+connection: close
+content-type: text/plain; charset=utf-8
+content-length: 141
+Date: Fri, 31 Jan 2025 15:22:56 GMT
+
+[{"name":"natoque penatibus","title":"\"natoque penatibus"},{"name":"ante vel","title":"laoreet ut rhoncus aliquet pulvinar sed nisl nunc"}]
+Connection closed by foreign host.
+
+
+
+
+Интернет магазин 
+=================
+https://ru.hexlet.io/code_reviews/1702948
+
+Как мы уже говорили, HTTP — это протокол без сохранения состояния, то есть каждый запрос и ответ не связан с предыдущим запросом и ответом. Чтобы сервер мог запомнить, что вы — это тот же пользователь, с которым он уже работал, используются Cookie.
+- Отправьте GET-запрос на сайт интернет магазина hexlet.local (расположен на localhost:8080), чтобы получить cookie для доступа к функционалу добавления товара в корзину. Адрес главной страницы магазина: /index. Скопируйте эту Cookie к себе. Во всех дальнейших запросах мы будем отправлять ее обратно серверу. Так он сможет понять, что вы — это вы.
+
+- Добавьте любой товар себе в корзину. Для этого отправьте POST-запрос с формой на страницу добавления товара /cart. Товар в форме отправляется так: item=<item name>. Например, item=computer. Не забудьте отправить серверу полученную куку, чтобы он вас идентифицировал и положил товар именно в вашу корзину
+
+- Проверьте, что товар корректно добавился в вашу корзину. Для этого отправьте GET-запрос на страницу корзины /cart
+
+/usr/src/app$ telnet localhost 8080
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+GET /index HTTP/1.1
+Host: hexlet.local
+
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+set-cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO; SameSite=Lax
+content-length: 17
+Date: Mon, 03 Feb 2025 13:49:49 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Session started!
+
+POST /cart HTTP/1.1
+Host: hexlet.local
+Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO
+Content-Type: application/x-www-form-urlencoded
+Content-length: 15
+
+item=cheesecake
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 36
+Date: Mon, 03 Feb 2025 13:50:00 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Item "cheesecake" added to the cart
+
+GET /cart HTTP/1.1
+Host: hexlet.local
+Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO
+
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 31
+Date: Mon, 03 Feb 2025 13:50:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Items in your cart: cheesecake
+
+POST /cart HTTP/1.1
+Host: hexlet.local
+Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO
+Content-Type: application/x-www-form-urlencoded
+Content-length: 11
+
+item=coffee
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 32
+Date: Mon, 03 Feb 2025 13:50:38 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Item "coffee" added to the cart
+
+GET /cart HTTP/1.1
+Host: hexlet.local
+Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO
+
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 38
+Date: Mon, 03 Feb 2025 13:50:51 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Items in your cart: cheesecake,coffee
+
+Connection: close
+HTTP/1.1 400 Bad Request
+Content-Length: 65
+Content-Type: application/json
+
+{"error":"Bad Request","message":"Client Error","statusCode":400}Connection closed by foreign host.
+
+# заходим на /index, получаем cookie
+/usr/src/app$ curl -i localhost:8080/index
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+set-cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO; SameSite=Lax
+content-length: 17
+Date: Mon, 03 Feb 2025 13:53:41 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Session started!
+
+# проверяем состояние корзины
+/usr/src/app$ curl -i -H "Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO" localhost:8080/cart
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 30
+Date: Mon, 03 Feb 2025 13:55:09 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Items in your cart: undefined
+
+# добавляем в корзину cheesecake
+/usr/src/app$ curl -i -H "Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO" -X POST -d "item=cheesecake" localhost:8080/cart
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 36
+Date: Mon, 03 Feb 2025 13:57:41 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Item "cheesecake" added to the cart
+
+# проверяем состояние корзины
+/usr/src/app$ curl -i -H "Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO" localhost:8080/cart
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 31
+Date: Mon, 03 Feb 2025 13:58:00 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Items in your cart: cheesecake
+
+# добавляем в корзину coffee
+/usr/src/app$ curl -i -H "Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO" -X POST -d "item=coffee" localhost:8080/cart
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 32
+Date: Mon, 03 Feb 2025 13:58:46 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Item "coffee" added to the cart
+
+# проверяем состояние корзины
+/usr/src/app$ curl -i -H "Cookie: sessionId=D7cv_Nb46fPXdTWXbk1xAwV63fUCDajO" localhost:8080/cart
+HTTP/1.1 200 OK
+content-type: text/plain; charset=utf-8
+content-length: 38
+Date: Mon, 03 Feb 2025 13:58:50 GMT
+Connection: keep-alive
+Keep-Alive: timeout=30
+
+Items in your cart: cheesecake,coffee
