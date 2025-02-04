@@ -31,3 +31,8 @@
 
     [Решение](https://ru.hexlet.io/code_reviews/1700329)
 
+- ##### [DAO](https://ru.hexlet.io/courses/python-sql/lessons/dao/theory_unit)
+
+    [Упражнение](https://ru.hexlet.io/courses/python-sql/lessons/dao/exercise_unit)
+
+    [Решение](https://ru.hexlet.io/code_reviews/1704616)
