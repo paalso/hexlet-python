@@ -2,7 +2,24 @@
 {% block content %}
 <a href="{{ url_for('new_product') }}">Add product</a>
 <!-- BEGIN (write your solution here) -->
-
+ <table>
+  <thead>
+    <th>Title</th>
+    <th>price</th>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <td>
+        <a href="{{ url_for('show_product', id=product.id) }}">
+          {{ product.title }}
+        </a>
+      </td>
+      <td>{{ product.price }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+ </table>
 <!-- END -->
 
 </body>

@@ -8,6 +8,10 @@ body {
   margin: 0 auto;
 }
 
+div {
+  margin: 50px;
+}
+
 table {
   width: 60%;
   border-collapse: collapse;

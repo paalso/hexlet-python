@@ -13,6 +13,6 @@
   </label>
   <input type="number" name="price" value="{{ product.price|default(0) }}">
   {% if errors %}
-      <div>{{ errors.price }}</div>
-    {% endif %}
+    <div>{{ errors.price }}</div>
+  {% endif %}
 </div>
