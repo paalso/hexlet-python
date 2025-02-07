@@ -1,5 +1,5 @@
 
-### [Курс Python: Веб-разработка (Flask)](https://ru.hexlet.io/courses/python-flask)
+### [Курс Python: SQL](https://ru.hexlet.io/courses/python-sql)
 
 - ##### [Стандарнтый Workflow](https://ru.hexlet.io/courses/python-sql/lessons/workflow/theory_unit)
 
@@ -36,3 +36,12 @@
     [Упражнение](https://ru.hexlet.io/courses/python-sql/lessons/dao/exercise_unit)
 
     [Решение](https://ru.hexlet.io/code_reviews/1704616)
+    
+#### [Испытания](https://ru.hexlet.io/courses/python-sql#challenges)
+
+- ##### [Каталог товаров](https://ru.hexlet.io/challenges/python_sql_catalog_exercise)
+
+    [Испытание](https://ru.hexlet.io/challenges/python_sql_catalog_exercise/instance)
+
+    [Решение](https://ru.hexlet.io/code_reviews/1708135)
+
