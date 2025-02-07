@@ -12,6 +12,9 @@ start:
 debug:
 	uv run flask --debug run -h 0.0.0.0 -p 8080
 
+run:
+	uv run gunicorn --workers=4 --bind=127.0.0.1:8000 src.app:app
+
 test:	
 	uv run pytest -vv tests
 

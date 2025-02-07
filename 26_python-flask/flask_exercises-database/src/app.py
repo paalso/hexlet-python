@@ -10,8 +10,8 @@ from flask import (
     url_for,
 )
 
-from repository import ProductsRepository, get_db
-from validator import validate
+from src.repository import ProductsRepository, get_db
+from src.validator import validate
 
 
 load_dotenv()
