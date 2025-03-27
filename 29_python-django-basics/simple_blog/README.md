@@ -6,3 +6,8 @@
 
 [Решение](https://ru.hexlet.io/code_reviews/1759218)
 
+##### [Приложения](https://ru.hexlet.io/courses/python-django-basics/lessons/apps/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/apps/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1759558)
