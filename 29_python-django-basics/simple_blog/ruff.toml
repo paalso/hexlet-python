@@ -1,0 +1,11 @@
+extend = "/usr/src/linter/ruff.toml"
+
+exclude = [
+  "settings.py",
+  "migrations",
+  "factories.py",
+  "tests"
+]
+
+[lint]
+extend-ignore = ["F401"]
