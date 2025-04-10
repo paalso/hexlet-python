@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+<!-- BEGIN (write your solution here) -->
+{% for article in articles %}
+  <article >
+    <h3>{{ article.title }}</h3>
+    <h5>Author: {{ article.author }}</h5>
+    <div>Some content...</div>
+  </article>
+  <br>
+{% endfor %}
+<!-- END -->
+{% endblock %}

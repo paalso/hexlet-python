@@ -1,34 +1,9 @@
+{% extends 'layout.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-<!doctype html>
-<html lang="{{ LANGUAGE_CODE }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Django | About</title>
-        {% bootstrap_css %}
-        {% bootstrap_javascript jquery=True %}
-    </head>
-    <body>
-        <div class="container mt-4">
-            <h1>О блоге</h1>
-            <p>Эксперименты с Django на Хекслете</p>
-            <!-- BEGIN (write your solution here) -->
-            <table>
-                <thead>
-                    <th>name</th>
-                    <th>position</th>
-                </thead>
-                {% for member in team %}
-                    <tr>
-                        <td>{{ member.name }}</td>
-                        <td>{{ member.position }}</td>
-                    </tr>
-                {% endfor %}
-                <caption>Our team</caption>
-            </table>
-            <!-- END -->
-        </div>
-    </body>
-</html>
+
+{% block content %}
+      <h1>О блоге</h1>
+      <p>Эксперименты с Django на Хекслете</p>
+{% endblock %}

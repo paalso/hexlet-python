@@ -12,7 +12,9 @@ def index(request):
     return render(request, 'index.html')
 
 
-# BEGIN (write your solution here)
 def about(request):
-    return render(request, 'about.html', context={'team': TEAM})
-# END
+    return render(request, 'about.html')
+
+
+def articles(request):
+    return render(request, 'articles/index.html', context={'articles':{}})

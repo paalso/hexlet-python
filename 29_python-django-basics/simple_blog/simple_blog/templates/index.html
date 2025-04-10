@@ -1,23 +1,8 @@
+{% extends 'layout.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-{% load bootstrap4 %}
-<!doctype html>
-<html lang="{{ LANGUAGE_CODE }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Simple blog</title>
-        {% bootstrap_css %}
-        {% bootstrap_javascript jquery=True %}
-    </head>
-    <body>
-        <div class="container mt-4">
-            <!-- BEGIN (write your solution here) -->
-            <ul>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/articles/">Articles</a></li>
-                <li><a href="/categories/">Categories</a></li>
-            </ul>
-            <!-- END -->
-        </div>
-    </body>
+
+{% block content %}
+<h1>Мой Джанго Блог</h1>
+{% endblock %}
