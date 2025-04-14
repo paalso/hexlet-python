@@ -9,8 +9,9 @@ def index(request):
         'who': who,
         'description': description
     })
-    return HttpResponse('article')
 
 
 def subarticle(request):
     return HttpResponse('subarticle')
+
+
