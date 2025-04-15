@@ -23,3 +23,9 @@
 [Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/templates-extends/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1772695)
+
+#### [Представления (Views)](https://ru.hexlet.io/courses/python-django-basics/lessons/templates-extends/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/views/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1777755)

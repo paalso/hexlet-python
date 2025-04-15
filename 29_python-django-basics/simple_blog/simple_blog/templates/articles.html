@@ -1,20 +1,45 @@
+{% load bootstrap4 %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-{% load bootstrap4 %}
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Django | About</title>
-        {% bootstrap_css %}
-        {% bootstrap_javascript jquery=True %}
-    </head>
-    <body>
-        <div class="container mt-4">
-            <!-- BEGIN (write your solution here) -->
-            <h1>Статьи</h1>
-            <!-- END -->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Django simple blog</title>
+    {% bootstrap_css %}
+  </head>
+  <body class="bg-light">
+    <header>
+      <div class="container mt-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Джанго Блог</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">О блоге</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/articles/">Статьи</a>
+          <li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Категории статей</a>
+          </li>
+        </ul>
         </div>
-    </body>
+        </nav>
+      </div>
+    </header>
+    <div class="container mt-4">
+      <h1>Статьи</h1>
+      <ul>
+        {% for article in articles %}
+        <li>{{ article.title }} by {{ article.author }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
 </html>
