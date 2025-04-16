@@ -7,6 +7,11 @@ def subarticle(request):
     return HttpResponse('subarticle')
 
 
+def article(request, tag, article_id):
+    response = f'Статья номер {article_id}. Тег {tag}'
+    return HttpResponse(response)
+
+
 class IndexView(View):
     def get(self, request):
         who = 'Paul'
@@ -17,3 +22,4 @@ class IndexView(View):
             'who': who,
             'description': description
         })
+

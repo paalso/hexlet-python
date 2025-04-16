@@ -34,12 +34,8 @@
       </div>
     </header>
     <div class="container mt-4">
-      <h1>Статьи</h1>
-      <ul>
-        {% for article in articles %}
-        <li>{{ article.title }} by {{ article.author }}</li>
-        {% endfor %}
-      </ul>
+        <h1>{{ article.title }}</h1>
+        <h2>by {{ article.author }}</h2>
     </div>
   </body>
 </html>
