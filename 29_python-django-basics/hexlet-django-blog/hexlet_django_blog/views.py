@@ -1,34 +1,20 @@
 from django.shortcuts import render
-from django.views.generic.base import TemplateView
-from django.http import HttpResponse
+
+TEAM = [
+    {'name': 'Yoda', 'position': 'CEO'},
+    {'name': 'Obi-Wan Kenobi', 'position': 'Senior Developer'},
+    {'name': 'Anakin Skywalker', 'position': 'Junior Developer'},
+    {'name': 'Jar Jar Binks', 'position': 'Trainee'},
+]
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 def about(request):
-    tags = ['обучение', 'программирование', 'python', 'oop']
-    return render(
-        request,
-        'about.html',
-        context={'tags': tags},
-    )
-
-# For roots like:
-# /users/42/pets/101/med_info/
-def med_info_view(request, user_id, pet_id):
-    response = f'Yout requested user_id: {user_id}, pet_id: {pet_id} med info'
-    return HttpResponse(response)
+    return render(request, 'about.html')
 
 
-def foobar(request):
-    return HttpResponse('Foo! Bar!!!')
-
-
-class HomePageView(TemplateView):
-    template_name = "index.html"
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['who'] = 'World!!!'
-        return context
-
-
-class SpecialPage1(TemplateView):
-    template_name = "special_template_1.html"
+def articles(request):
+    return render(request, 'articles/index.html', context={'articles':{}})

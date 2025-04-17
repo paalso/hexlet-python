@@ -1,5 +1,8 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
-<h1>Hello, {{ who }}!</h1>
+<h1>Мой Джанго Блог</h1>
 {% endblock %}
