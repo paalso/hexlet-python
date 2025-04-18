@@ -35,3 +35,9 @@
 [Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/routing/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1779221)
+
+#### [Django ORM](https://ru.hexlet.io/courses/python-django-basics/lessons/django-orm/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/django-orm/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1781297)

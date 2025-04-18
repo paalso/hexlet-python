@@ -1,7 +1,0 @@
-from django.urls import path
-from simple_blog.articles import views
-
-urlpatterns = [
-    path('', views.index, name='articles_index'),
-    path('<int:id>/', views.articles_show, name='articles_show'),
-]

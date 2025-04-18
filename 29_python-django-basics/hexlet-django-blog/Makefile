@@ -9,3 +9,6 @@ console:
 
 install:
 	uv sync
+
+sqlite:
+	sqlite3 db.sqlite3

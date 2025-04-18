@@ -12,13 +12,15 @@
   <body class="bg-light">
     <div class="container mt-4">
         <header>
-            {% include "./navigation.html" %}
+        {% block navigation %}
+        {% endblock %}
         </header>
       </div>
 
       <div class="container">
       <main>
         {% block content %}
+          <h1>Мой Джанго Блог</h1>
         {% endblock %}
       </main>
       </div>
