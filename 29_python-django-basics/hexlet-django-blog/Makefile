@@ -12,3 +12,6 @@ install:
 
 sqlite:
 	sqlite3 db.sqlite3
+
+shell:
+	uv run python3 manage.py shell
