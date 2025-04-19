@@ -9,10 +9,3 @@ console:
 
 install:
 	uv sync
-
-# db aliases
-sqlite:
-	sqlite3 db.sqlite3
-
-migrate:
-	uv run python3 manage.py migrate
