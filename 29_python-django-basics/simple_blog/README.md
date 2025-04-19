@@ -35,3 +35,9 @@
 [Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/routing/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1779221)
+
+#### [Работа с моделями](https://ru.hexlet.io/courses/python-django-basics/lessons/models/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/models/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1781664)

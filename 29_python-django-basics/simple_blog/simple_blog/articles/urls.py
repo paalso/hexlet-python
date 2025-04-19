@@ -1,7 +1,9 @@
 from django.urls import path
 from simple_blog.articles import views
 
+
+app_name = 'articles'
 urlpatterns = [
-    path('', views.index, name='articles_index'),
-    path('<int:id>/', views.articles_show, name='articles_show'),
+    path('', views.index, name='index'),
+    path('<int:id>', views.article_view, name='article'),
 ]
