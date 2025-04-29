@@ -2,9 +2,10 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from .models import Article
+from django.views.decorators.csrf import csrf_exempt
 
 
-# @csrf_exempt
+@csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def index(request):
     # BEGIN (write your solution here)
@@ -15,6 +16,8 @@ def index(request):
         }
         Article.objects.create(**article)
     articles = Article.objects.all()
+    print('Articles:')
+    print(articles)
     # END
     return render(request, 'articles/index.html', context={'articles': articles})
 

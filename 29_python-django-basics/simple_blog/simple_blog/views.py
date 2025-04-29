@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 
 TEAM = [
     {'name': 'Yoda', 'position': 'CEO'},
@@ -9,7 +10,15 @@ TEAM = [
 
 
 def index(request):
-    return render(request, 'index.html')
+    print(settings.USERNAME)
+    return render(
+        request,
+        'index.html',
+        context={
+            'username': settings.USERNAME,
+            'password': settings.PASSWORD,
+            }
+    )
 
 
 def about(request):

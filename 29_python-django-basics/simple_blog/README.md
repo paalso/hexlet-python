@@ -41,3 +41,9 @@
 [Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/models/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1781664)
+
+#### [Конфигурация](https://ru.hexlet.io/courses/python-django-basics/lessons/environments/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/environments/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1787246)
