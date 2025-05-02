@@ -1,22 +1,36 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
+from django.views import View
 from .models import Article
 
 
 # @csrf_exempt
-@require_http_methods(['GET', 'POST'])
-def index(request):
-    # BEGIN (write your solution here)
-    if request.method == 'POST':
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+        articles = Article.objects.all()[:15]
+        return render(
+            request,
+            "articles/index.html",
+            context={
+                "articles": articles,
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
         article = {
             'title': request.POST['title'],
-            'author': request.POST['author']
+            'author': request.POST['author'],
         }
         Article.objects.create(**article)
-    articles = Article.objects.all()
-    # END
-    return render(request, 'articles/index.html', context={'articles': articles})
+        articles = Article.objects.all()[:15]
+        return render(
+            request,
+            "articles/index.html",
+            context={
+                "articles": articles,
+            },
+        )
 
 
 @require_http_methods(['GET'])

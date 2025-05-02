@@ -16,8 +16,6 @@ def index(request):
         }
         Article.objects.create(**article)
     articles = Article.objects.all()
-    print('Articles:')
-    print(articles)
     # END
     return render(request, 'articles/index.html', context={'articles': articles})
 
