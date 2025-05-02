@@ -12,7 +12,7 @@
         {{ article.name }}
       </h2>
       <div class="mb-0">{{ article.body|slice:":200" }}</div>
-      <a href="{% url 'articles_view' article.id %}">link</a>
+      <a href="{% url 'articles:articles_view' article.id %}">link</a>
     </div>
   </li>
   {% endfor %}

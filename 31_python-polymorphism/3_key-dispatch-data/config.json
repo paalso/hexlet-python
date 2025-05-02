@@ -1,0 +1,10 @@
+{
+    "development": {
+        "debug": true,
+        "database": "sqlite:///:memory:"
+    },
+    "production": {
+        "debug": false,
+        "database": "postgresql://user:pass@localhost/db"
+    }
+}

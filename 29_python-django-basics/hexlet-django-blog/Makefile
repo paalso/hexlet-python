@@ -24,7 +24,7 @@ console:
 
 # Run test suite
 test:
-	uv run python3 manage.py test tests/
+	uv run python3 manage.py test
 
 # Connect to the SQLite database manually
 sqlite:
