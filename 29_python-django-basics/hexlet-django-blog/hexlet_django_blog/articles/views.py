@@ -7,30 +7,25 @@ from .models import Article
 
 # @csrf_exempt
 class IndexView(View):
+    template_name = "articles/index.html"
+
     def get(self, request, *args, **kwargs):
-        articles = Article.objects.all()[:15]
-        # return render(request, 'about.html')
-        return render(
-            request,
-            "articles/index.html",
-            context={
-                "articles": articles,
-            },
-        )
+        return self._render_articles()
 
     def post(self, request, *args, **kwargs):
-        article = {
-            'title': request.POST['title'],
-            'author': request.POST['author'],
+        article_data = {
+            'title': request.POST.get('title'),
+            'author': request.POST.get('author'),
         }
-        Article.objects.create(**article)
-        articles = Article.objects.all()[:15]
+        Article.objects.create(**article_data)
+        return self._render_articles()
+
+    def _render_articles(self, items_on_page=15):
+        articles = Article.objects.all()[:items_on_page]
         return render(
-            request,
-            "articles/index.html",
-            context={
-                "articles": articles,
-            },
+            self.request,
+            self.template_name,
+            context={"articles": articles},
         )
 
 
