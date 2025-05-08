@@ -4,13 +4,11 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
-<h1>Статьи</h1>
+<h1>Список категорий статей</h1>
 <ul>
-  {% for article in articles %}
+  {% for category in categories %}
   <li class="mb-3">
-    <h2 class="h4">{{ article.title }}</h2>
-    <div>{{ article.body|slice:":200" }}</div>
-    <p class="small"><a href="">Add category</a></p>
+    {{ category.name }} : {{ category.description }}
   </li>
   {% endfor %}
 </ul>

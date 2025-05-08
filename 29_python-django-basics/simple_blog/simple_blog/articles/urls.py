@@ -3,7 +3,8 @@ from simple_blog.articles import views
 
 
 app_name = 'articles'
+
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('<int:id>', views.article_view, name='article'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('<int:id>', views.ArticleView.as_view(), name='article'),
 ]
