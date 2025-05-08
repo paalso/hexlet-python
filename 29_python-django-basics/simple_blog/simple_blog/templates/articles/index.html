@@ -8,9 +8,18 @@
 <ul>
   {% for article in articles %}
   <li class="mb-3">
-    <h2 class="h4">{{ article.title }}</h2>
+    <h2 class="h4">
+      <a href="{% url 'articles:article' article.id %}" class="text-decoration-none text-body">
+        {{ article.title }}
+      </a>
+    </h2>
     <div>{{ article.body|slice:":200" }}</div>
-    <p class="small"><a href="">Add category</a></p>
+    <p class="small">
+      Category:
+      <a href="{% url 'categories:index' %}" class="text-decoration-none text-body">
+        {{ article.category.name }}
+      </a>
+    </p>
   </li>
   {% endfor %}
 </ul>
