@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+  <h1 class="h2">{{ category.name }}</h1>
+  <div>{{ category.description }}</div>
+
+  <h2>Список статей категории</h2>
+  {% if category_articles %}
+  <ol>
+  {% for article in category_articles %}
+  <li>
+    <a href="{% url 'articles_detail' article.id %} ">{{ article.title }}</a>
+  </li>
+  {% endfor %}
+  </ol>
+  {% endif %}
+{% endblock %}

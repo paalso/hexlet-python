@@ -53,3 +53,9 @@
 [Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/index/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1797709)
+
+#### [Список (CRUD) ](https://ru.hexlet.io/courses/python-django-basics/lessons/show/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/show/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1798474)
