@@ -5,6 +5,7 @@
 {% block content %}
   <div class="container mt-4">
     <h1>Список статей</h1>
+    <a href="{% url 'articles_create' %}" class="h3">Новая статья</a>
     <ul>
       {% for article in articles %}
       <li>
