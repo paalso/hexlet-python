@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load bootstrap4 i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>Список статей</h1>
+    <!-- BEGIN (write your solution here) -->
+
+    <!-- END -->
+
+    <ul>
+      {% for article in articles %}
+      <li>
+        <h2>{{ article.title }}</h2>
+        <p>Категория: {{ article.category }}</p>
+        <p>Дата публикации: {{ article.pub_date }}</p>
+        <p>{{ article.content }}</p>
+        <a href="{% url 'articles_detail' article.id %}">Читать</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}
+
