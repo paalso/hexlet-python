@@ -1,3 +1,5 @@
+<!--simple_journal/templates/articles/index.html-->
+
 {% extends 'layout.html' %}
 {% load bootstrap4 i18n %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -6,7 +8,7 @@
   <div class="container mt-4">
     <h1>Список статей</h1>
     <!-- BEGIN (write your solution here) -->
-
+    <a href="{% url 'articles_create' %}" class="h3">Новая статья</a>
     <!-- END -->
 
     <ul>

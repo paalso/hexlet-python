@@ -5,6 +5,6 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='articles_index'),
     path('<int:id>/', views.ArticleView.as_view(), name='articles_detail'),
     # BEGIN (write your solution here)
-
+    path('create/', views.ArticleFormView.as_view(), name='articles_create'),
     # END
 ]

@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container mt-4">
   <h1>{{ article.title }}</h1>
-  <div>{{ article.body }}</div>
+  <div>{{ article.content }}</div>
   <p>Категории:
   <a href="{% url 'categories_detail' article.category.id %}">
       {{ article.category }}

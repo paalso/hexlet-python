@@ -59,3 +59,15 @@
 [Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/show/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1798474)
+
+#### [создание](https://ru.hexlet.io/courses/python-django-basics/lessons/create/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/create/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1804305)
+
+#### [создание](https://ru.hexlet.io/courses/python-django-basics/lessons/update/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/update/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1804358)
