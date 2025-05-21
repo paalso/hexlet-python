@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 from simple_blog.articles.models import Article
@@ -41,6 +42,7 @@ class ArticleFormView(View):
     def post(self, request, *args, **kwargs):
         form = ArticleForm(request.POST)
         if form.is_valid():  # Если данные корректные, то сохраняем данные формы
+            messages.success(request, 'Статья успешно создана!')
             form.save()
             return redirect(reverse('articles_index'))  # Редирект на указанный маршрут
         # Если данные некорректные, то возвращаем человека обратно на страницу с заполненной формой
@@ -67,3 +69,13 @@ class ArticleFormEditView(View):
         return render(
             request, 'articles/update.html', {'form': form, 'article_id': article_id}
         )
+
+class ArticleFormDeleteView(View):
+    def post(self, request, *args, **kwargs):
+        article_id = kwargs.get('id')
+        print(f'Deleting article {article_id}')
+        article = Article.objects.get(id=article_id)
+        if article:
+            article.delete()
+            messages.success(request, 'Статья удалена.')
+        return redirect(reverse('articles_index'))

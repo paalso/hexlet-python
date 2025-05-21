@@ -59,3 +59,14 @@ class CategoryFormUpdateView(View):
         return render(
             request, 'categories/update.html', {'form': form, 'category_id': category_id}
         )
+
+
+class CategoryFormDeleteView(View):
+    def post(self, request, *args, **kwargs):
+        category_id = kwargs.get('id')
+        print(f'Deleting article {category_id}')
+        article = Category.objects.get(id=category_id)
+        if article:
+            article.delete()
+            # messages.success(request, 'Статья удалена.')
+        return redirect(reverse('categories_index'))

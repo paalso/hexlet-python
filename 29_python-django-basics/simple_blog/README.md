@@ -60,7 +60,7 @@
 
 [Решение](https://ru.hexlet.io/code_reviews/1798474)
 
-#### [создание](https://ru.hexlet.io/courses/python-django-basics/lessons/create/theory_unit)
+#### [Создание (CRUD)](https://ru.hexlet.io/courses/python-django-basics/lessons/create/theory_unit)
 
 [Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/create/exercise_unit)
 
@@ -68,6 +68,12 @@
 
 #### [создание](https://ru.hexlet.io/courses/python-django-basics/lessons/update/theory_unit)
 
-[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/update/exercise_unit)
+[Обновление (CRUD)](https://ru.hexlet.io/courses/python-django-basics/lessons/update/exercise_unit)
 
 [Решение](https://ru.hexlet.io/code_reviews/1804358)
+
+#### [Удаление (CRUD)](https://ru.hexlet.io/courses/python-django-basics/lessons/delete/theory_unit)
+
+[Упражение](https://ru.hexlet.io/courses/python-django-basics/lessons/delete/exercise_unit)
+
+[Решение](https://ru.hexlet.io/code_reviews/1808417)

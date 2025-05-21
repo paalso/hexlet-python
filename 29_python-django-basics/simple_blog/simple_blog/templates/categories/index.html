@@ -16,6 +16,10 @@
       </h2>
       <div>{{ category.description }}</div>
       <small><a href="{% url 'categories_update' category.id %}">Редактировать</a></small>
+      <form action="{% url 'categories_delete' category.id %}" method="post" onsubmit="return confirm('Удалить категорию?');">
+        {% csrf_token %}
+        <input type="submit" value="Удалить">
+      </form>
     {% endfor %}
   </div>
 {% endblock content %}
