@@ -26,6 +26,9 @@ shell:
 sqlite:
 	sqlite3 db.sqlite3
 
+showmigrations:
+	@$(MANAGE) showmigrations
+
 .PHONY: lint
 lint:
 	uv run ruff check python_django_orm_blog
