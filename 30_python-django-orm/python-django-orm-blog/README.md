@@ -22,3 +22,23 @@ make test
 This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet](https://hexlet.io?utm_source=github&utm_medium=link&utm_campaign=python-django-orm-blog).
 
 See most active contributors on [hexlet-friends](https://friends.hexlet.io/).
+
+
+## Решения упражнений по курсу [Python: Django ORM](https://ru.hexlet.io/courses/python-django-orm)  
+  
+### [Основные концепции](https://ru.hexlet.io/courses/python-django-orm/lessons/concepts/exercise_unit)
+- [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/concepts/exercise_unit)  
+- [Решение](https://ru.hexlet.io/code_reviews/1808771)  
+  
+### [Модель](https://ru.hexlet.io/courses/python-django-orm/lessons/model/theory_unit)  
+- [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/model/exercise_unit)  
+- [Решение](https://ru.hexlet.io/code_reviews/1809577)
+
+- ### [Запрос данных из базы](https://ru.hexlet.io/courses/python-django-orm/lessons/making-queries/theory_unit)  
+- [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/making-queries/exercise_unit)
+- [Решение](https://ru.hexlet.io/code_reviews/1810012)
+
+- ### [Связи](https://ru.hexlet.io/courses/python-django-orm/lessons/relations/theory_unit)  
+- [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/relations/exercise_unit)
+- [Решение](https://ru.hexlet.io/code_reviews/1810059)
+

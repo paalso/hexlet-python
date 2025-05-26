@@ -53,3 +53,31 @@ class PostLike(TimestampedModel):
 
     class Meta:
         unique_together = ['post', 'creator']
+
+
+class CycleInGraphError(Exception):
+    "An exception that means that some graph has cycles."
+
+
+class Task(models.Model):
+    value = models.CharField(max_length=200)
+    parent = models.ForeignKey('self', null=True, on_delete=models.CASCADE)
+
+    @property
+    def root(self):
+        "Returns a root task (task which parent is None)."
+        # BEGIN (write your solution here)
+        processed_ids = set()
+
+        def root_searcher(task):
+            parent_task = task.parent
+            if parent_task is None:
+                return task
+            parent_task_id = parent_task.id
+            if parent_task_id in processed_ids:
+                raise CycleInGraphError(parent_task_id, f'Cyclic graph detected. Task {parent_task_id} has already been encountered')
+            processed_ids.add(parent_task_id)
+            return root_searcher(parent_task)
+
+        return root_searcher(self)
+        # END
