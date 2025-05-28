@@ -16,6 +16,10 @@ db-clean:
 	@rm db.sqlite3 || true
 
 .PHONY: migrate
+makemigrations:
+	@$(MANAGE) makemigrations
+
+.PHONY: migrate
 migrate:
 	@$(MANAGE) migrate
 

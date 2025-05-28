@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count
 
 
 class TimestampedModel(models.Model):
@@ -17,6 +18,7 @@ class User(TimestampedModel):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
+    nickname = models.CharField(max_length=100, null=True)
 
 
 class Tag(TimestampedModel):
@@ -53,3 +55,40 @@ class PostLike(TimestampedModel):
 
     class Meta:
         unique_together = ['post', 'creator']
+
+
+# --- Аннотирование ----------------------------------------------------------
+
+class Clip(models.Model):
+    title = models.CharField(max_length=200)
+
+    def like(self):
+        ClipLike.objects.create(clip=self)
+
+    def dislike(self):
+        ClipDislike.objects.create(clip=self)
+
+    @classmethod
+    def rates_for(cls, *args):
+        """
+        Returns a tuple of integers (likes, dislikes)
+        for the clip(s) filtered by provided args.
+        """
+        ratings = cls.objects.filter(title__in=args).annotate(
+            like_count=Count('cliplike', distinct=True),
+            dislike_count=Count('clipdislike', distinct=True)
+        ).order_by('title')
+        return [(e.like_count, e.dislike_count) for e in ratings]
+
+
+# Обычно используют одну модель как для положительных реакций,
+# так и для отрицательных. Однако в рамках этого упражнения
+# две отдельные модели использовать удобнее. В реальных проектах
+# такое тоже встречается, когда некое явление пользователю
+# позволено оценить одновременно и положительно, и отрицательно.
+class ClipLike(models.Model):
+    clip = models.ForeignKey(Clip, on_delete=models.CASCADE)
+
+
+class ClipDislike(models.Model):
+    clip = models.ForeignKey(Clip, on_delete=models.CASCADE)
