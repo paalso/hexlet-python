@@ -42,3 +42,6 @@ See most active contributors on [hexlet-friends](https://friends.hexlet.io/).
 - [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/relations/exercise_unit)
 - [Решение](https://ru.hexlet.io/code_reviews/1810059)
 
+- ### [Связи](https://ru.hexlet.io/courses/python-django-orm/lessons/many-to-many/theory_unit)  
+- [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/many-to-many/theory_unit/)
+- [Решение](https://ru.hexlet.io/code_reviews/1812073)
