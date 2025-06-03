@@ -1,0 +1,24 @@
+{% extends './layout.html' %}
+
+{% block content %}
+<h1>Teachers</h1>
+<ul>
+    {% for teacher in teachers %}
+        <li>
+            <h2>Teacher: {{ teacher.name }}</h2>
+            <p>Total students: {{ teacher.total_students }}</p>
+            <ul>
+                {% for course in teacher.courses.all %}
+                        <h4>{{ teacher.name }} course: {{ course.name }}</h4>
+                        <h5>Students in course:</h5>
+                        <ul>
+                            {% for student in course.students.all %}
+                                <li>{{ student.name }}</li>
+                            {% endfor %}
+                        </ul>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

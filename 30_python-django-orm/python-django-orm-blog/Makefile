@@ -1,4 +1,11 @@
+# Port for development server
+PORT = 8080
+
 MANAGE := uv run python manage.py
+
+# Run development server
+start:
+	uv run python3 manage.py runserver 0.0.0.0:$(PORT)
 
 .PHONY: test
 test:
@@ -15,7 +22,7 @@ install:
 db-clean:
 	@rm db.sqlite3 || true
 
-.PHONY: migrate
+.PHONY: makemigrations
 makemigrations:
 	@$(MANAGE) makemigrations
 

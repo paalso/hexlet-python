@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, transaction, IntegrityError
 from django.db.models import Count
 
 
@@ -34,6 +34,9 @@ class Post(TimestampedModel):
     body = models.TextField()
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return f'Post {self.id}'
 
 
 class PostComment(TimestampedModel):
@@ -92,3 +95,55 @@ class ClipLike(models.Model):
 
 class ClipDislike(models.Model):
     clip = models.ForeignKey(Clip, on_delete=models.CASCADE)
+
+# --- Транзакции -------------------------------------------------------------
+
+
+class Project(models.Model):
+    name = models.CharField(max_length=200)
+
+    @classmethod
+    def reorganize(cls, assignments):
+        all_worker_ids = Worker.objects.values_list('id', flat=True)
+        project_ids = {pid for pid in assignments.values() if pid is not None}
+
+        existing_project_ids = set(
+            cls.objects.\
+                filter(id__in=project_ids).\
+                values_list('id', flat=True)
+        )
+        if project_ids != existing_project_ids:
+            raise IntegrityError("One or more project IDs do not exist.")
+
+        with transaction.atomic():
+            for worker_id in all_worker_ids:
+                new_project_id = assignments.get(worker_id)
+                Worker.objects.filter(id=worker_id).\
+                       update(project_id=new_project_id)
+
+
+class Worker(models.Model):
+    name = models.CharField(max_length=200)
+    project = models.ForeignKey(
+        Project,
+        null=True,
+        on_delete=models.SET_NULL,
+    )
+
+
+# --- Эффективное использование ORM ------------------------------------------
+
+class Teacher(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=100)
+    teacher = models.ForeignKey(Teacher, related_name='courses', on_delete=models.CASCADE)
+    students = models.ManyToManyField(Student, related_name='courses')
+
+

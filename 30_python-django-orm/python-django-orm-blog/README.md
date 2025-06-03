@@ -42,10 +42,18 @@ See most active contributors on [hexlet-friends](https://friends.hexlet.io/).
 - [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/relations/exercise_unit)
 - [Решение](https://ru.hexlet.io/code_reviews/1810059)
 
-- ### [Связи](https://ru.hexlet.io/courses/python-django-orm/lessons/many-to-many/theory_unit)  
+- ### [Многие ко Многим](https://ru.hexlet.io/courses/python-django-orm/lessons/many-to-many/theory_unit)  
 - [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/many-to-many/exercise_unit)
 - [Решение](https://ru.hexlet.io/code_reviews/1812073)
 
-- ### [Связи](https://ru.hexlet.io/courses/python-django-orm/lessons/annotation/theory_unit)  
+- ### [Аннотирование и агрегация](https://ru.hexlet.io/courses/python-django-orm/lessons/annotation/theory_unit)  
 - [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/annotation/exercise_unit)
 - [Решение](https://ru.hexlet.io/code_reviews/1813919)
+
+- ### [Транзакции](https://ru.hexlet.io/courses/python-django-orm/lessons/transactions/theory_unit)  
+- [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/transactions/exercise_unit)
+- [Решение](https://ru.hexlet.io/code_reviews/1814659)
+
+- ### [Эффективное использование ORM ](https://ru.hexlet.io/courses/python-django-orm/lessons/efficiency/theory_unit)  
+- [Упражнение](https://ru.hexlet.io/courses/python-django-orm/lessons/efficiency/exercise_unit)
+- [Решение](https://ru.hexlet.io/code_reviews/1818311)
