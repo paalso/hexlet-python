@@ -2,8 +2,18 @@
 
 {% block content %}
 
-<h1>{% if form.instance.pk %}Редактировать{% else %}Создать{% endif %} статью</h1>
-<!--BEGIN (write your solution here)-->
 
-<!--END-->
+{% if form.instance.pk %}
+  <h1>Редактировать статью</h1>
+  <form action="{% url 'article_update' id=article_id %}" method="post">
+{% else %}
+  <h1>Создать статью</h1>
+  <form action="{% url 'article_create' %}" method="post">
+{% endif %}
+      {% csrf_token %}
+      <table border="1">
+         {{ form }}
+      </table>
+      <input type="submit" value="Сохранить">
+    </form>
 {% endblock %}
