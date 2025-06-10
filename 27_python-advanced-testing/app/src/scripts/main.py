@@ -1,10 +1,17 @@
 import os
-from src.fileutils import read
-from src.utils import get_fake_data
+from src.fileutils import get_files_count
 
 
 def main():
-    print(get_fake_data({'first_name': 'Вася', 'last_name': 'Пупкин'}))
+    fake_logger = lambda: None
+    input_path = 'test_data/fixtures'
+    print(get_files_count(input_path, fake_logger))
+
+    input_path = 'test_data/fixtures/flat'
+    print(get_files_count(input_path, fake_logger))
+
+    input_path = 'test_data/fixtures/nested'
+    print(get_files_count(input_path, fake_logger))
 
 
 if __name__ == "__main__":

@@ -18,4 +18,7 @@ check: test lint
 build:
 	uv build
 
+shell:
+	uv run python3
+
 .PHONY: install test lint selfcheck check build
