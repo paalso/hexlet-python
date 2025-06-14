@@ -11,6 +11,6 @@ def read(path):
  
 
 def get_files_count(filepath, log=default_logger):
-    log()
+    log('Go!')
     files_count = sum(len(files) for _, _, files in os.walk(filepath))
     return files_count

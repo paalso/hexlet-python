@@ -1,4 +1,5 @@
 import os, pytest
+from unittest.mock import Mock
 
 from src.fileutils import read, get_files_count
 
@@ -31,7 +32,20 @@ def test_existing_dir_path_read():
         assert read(existing_dir_path)
 
 
-def test_get_files_count():
+# def test_get_files_count():
+#     directory_path = get_fixture_path("nested")
+#     files_count = get_files_count(directory_path, lambda: None)
+#     assert files_count == 4
+
+
+def test_get_files_count_logger():
+    logger = Mock()
     directory_path = get_fixture_path("nested")
-    files_count = get_files_count(directory_path, lambda: None)
+    files_count = get_files_count(directory_path, logger)
     assert files_count == 4
+    logger.assert_called_once_with('Go!')
+
+'''
+    assert mock.call_count == 1
+    assert mock.call_args.args[0] == 'Go!'
+'''

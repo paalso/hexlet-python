@@ -16,6 +16,14 @@
 - [Упражнение](https://ru.hexlet.io/courses/python-advanced-testing/lessons/files/exercise_unit)
 - [Решение](https://ru.hexlet.io/code_reviews/1170591)
 
-### [Инверсия зависимостей](https://ru.hexlet.io/courses/python-advanced-testing/lessons/stub/theory_unit)
+### [Тестирование HTTP-запросов](https://ru.hexlet.io/courses/python-advanced-testing/lessons/stub/theory_unit)
 - [Упражнение](https://ru.hexlet.io/courses/python-advanced-testing/lessons/stub/exercise_unit)
 - [Решение](https://ru.hexlet.io/code_reviews/1178768)
+
+### [Манкипатчинг](https://ru.hexlet.io/courses/python-advanced-testing/lessons/monkey-patching/theory_unit)
+- [Упражнение](https://ru.hexlet.io/courses/python-advanced-testing/lessons/monkey-patching/exercise_unit)
+- [Решение](https://ru.hexlet.io/code_reviews/1180037)
+
+### [Мокинг](https://ru.hexlet.io/courses/python-advanced-testing/lessons/mocking/theory_unit)
+- [Упражнение](https://ru.hexlet.io/courses/python-advanced-testing/lessons/mocking/exercise_unit)
+- [Решение](https://ru.hexlet.io/code_reviews/1183134)

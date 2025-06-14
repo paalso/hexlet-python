@@ -1,17 +1,16 @@
+from dotenv import load_dotenv
 import os
-from src.fileutils import get_files_count
+from src.webutils import get_repos_full_names, get_repos
 
 
 def main():
-    fake_logger = lambda: None
-    input_path = 'test_data/fixtures'
-    print(get_files_count(input_path, fake_logger))
+    load_dotenv()
+    token = os.getenv('GITHUB_TOKEN')
 
-    input_path = 'test_data/fixtures/flat'
-    print(get_files_count(input_path, fake_logger))
-
-    input_path = 'test_data/fixtures/nested'
-    print(get_files_count(input_path, fake_logger))
+    repos = get_repos(token)
+    print(repos)
+    print(get_repos_full_names(token))
+    print(type(repos[0]))
 
 
 if __name__ == "__main__":
