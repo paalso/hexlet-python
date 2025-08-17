@@ -1,0 +1,13 @@
+https://ru.hexlet.io/courses/http-api/lessons/authentication/exercise_unit
+https://ru.hexlet.io/code_reviews/1868560
+
+Используя curl выполните GET-запрос к localhost на порт 8080 по пути /private добавив заголовок X-API-Key для API-ключа
+В запросе используйте ключ 1234asdf
+
+curl http://localhost:8080/private -H "X-API-Key: 1234asdf"
+
+/usr/src/app$ curl http://localhost:8080/private -H "Invalid-header: 1234asdf"
+Forbidden action
+/usr/src/app$ 
+/usr/src/app$ curl http://localhost:8080/private -H "X-API-Key: 1234asdf"
+Success!

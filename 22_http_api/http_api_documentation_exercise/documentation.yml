@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Books API
+  version: 1.0.0
+  description: API для работы с книгами
+servers:
+  - url: http://localhost:8080
+paths:
+  /books:
+    get:
+      summary: Получение списка книг
+      responses:
+        "200":
+          description: Список книг
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+  /books/{id}:
+    get:
+      summary: Получение книги по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        "200":
+          description: Книга найдена
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+        "404":
+          description: Книга не найдена
+    patch:
+      summary: Обновление книги по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                shelf:
+                  type: string
+      responses:
+        "200":
+          description: Книга обновлена
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+        "400":
+          description: Недопустимое тело запроса
+        "404":
+          description: Книга не найдена
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+        author:
+          type: string
+        shelf:
+          type: string
